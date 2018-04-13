@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProjectileThrower : MonoBehaviour {
 
 	public GameObject projectile;
-	[SerializeField] private GameObject projectileHolder;
+	[SerializeField] public GameObject projectileHolder;
 	[SerializeField] private GameObject scope;
 	[SerializeField] private float angleSpeed;
 	[SerializeField] private float force;
@@ -46,6 +46,15 @@ public class ProjectileThrower : MonoBehaviour {
 				isGoingUp = true;
 			}
 		}
+	}
+
+	public void setProjectile (GameObject proj) {
+		projectile = proj;
+		projectileRigidBody = projectile.GetComponent<Rigidbody2D> ();
+		projectile.transform.SetParent (projectileHolder.transform);
+		projectile.transform.localPosition = Vector3.zero;
+		projectileRigidBody.isKinematic = true;
+
 	}
 
 	void ThrowProjectile () {
