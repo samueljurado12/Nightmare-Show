@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-	[SerializeField]private float speed, jumpForce;
+	[SerializeField]private float speed, jumpForce, gravityForce;
 	[Range(1,2)]
 	[SerializeField]private int playerNumber;
 
@@ -17,10 +17,26 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Move ();
+		float horizontalDir = Input.GetAxis ("Horizontal" + playerNumber);
+		if (!onGround) {
+			Gravity ();
+		} else {
+			Jump (horizontalDir);
+			Move (horizontalDir);
+		}
 	}
 
-	void Move (){
-		transform.Translate(Input.GetAxis("Horizontal" + playerNumber) * speed * Time.deltaTime * Vector3.right);
+	void Move (float direction){
+		transform.Translate(direction * speed * Time.deltaTime * Vector3.right);
+	}
+
+	void Jump (float direction) {
+		if (Input.GetButtonDown ("Jump" + playerNumber)) {
+			transform.Translate (Vector2.up * jumpForce);
+		}
+	}
+
+	void Gravity () {
+		transform.Translate (Vector3.down * gravityForce * Time.deltaTime);
 	}
 }
