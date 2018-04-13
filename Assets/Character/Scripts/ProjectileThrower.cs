@@ -9,6 +9,8 @@ public class ProjectileThrower : MonoBehaviour {
 	[SerializeField] private GameObject scope;
 	[SerializeField] private float angleSpeed;
 	[SerializeField] private float force;
+	[Range(1,2)]
+	[SerializeField] private int playerNumber;
 	private Rigidbody2D projectileRigidBody;
 	private bool isGoingUp = true;
 
@@ -18,11 +20,11 @@ public class ProjectileThrower : MonoBehaviour {
 		scope.SetActive (false);
 	}
 
-	void Update () {
+	void Update () { //TODO Assign self player fire button
 		if (projectile) {
-			if (Input.GetKey (KeyCode.Return)) {
+			if (Input.GetButton("Fire" + playerNumber)) {
 				AimShot ();
-			} else if (Input.GetKeyUp (KeyCode.Return)) {
+			} else if (Input.GetButtonUp("Fire" + playerNumber)) {
 				scope.SetActive (false);
 				ThrowProjectile ();
 			}
