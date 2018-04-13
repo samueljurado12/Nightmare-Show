@@ -5,10 +5,12 @@ using UnityEngine;
 public class ProjectileThrower : MonoBehaviour {
 
 	public GameObject projectile;
-	[SerializeField] private GameObject projectileHolder;
+	[SerializeField] public GameObject projectileHolder;
 	[SerializeField] private GameObject scope;
 	[SerializeField] private float angleSpeed;
 	[SerializeField] private float force;
+	[Range(1,2)]
+	[SerializeField] private int playerNumber;
 	private Rigidbody2D projectileRigidBody;
 	private bool isGoingUp = true;
 
@@ -18,11 +20,11 @@ public class ProjectileThrower : MonoBehaviour {
 		scope.SetActive (false);
 	}
 
-	void Update () {
+	void Update () { //TODO Assign self player fire button
 		if (projectile) {
-			if (Input.GetKey (KeyCode.Return)) {
+			if (Input.GetButton("Fire" + playerNumber)) {
 				AimShot ();
-			} else if (Input.GetKeyUp (KeyCode.Return)) {
+			} else if (Input.GetButtonUp("Fire" + playerNumber)) {
 				scope.SetActive (false);
 				ThrowProjectile ();
 			}
@@ -46,6 +48,15 @@ public class ProjectileThrower : MonoBehaviour {
 				isGoingUp = true;
 			}
 		}
+	}
+
+	public void setProjectile (GameObject proj) {
+		projectile = proj;
+		projectileRigidBody = projectile.GetComponent<Rigidbody2D> ();
+		projectile.transform.SetParent (projectileHolder.transform);
+		projectile.transform.localPosition = Vector3.zero;
+		projectileRigidBody.isKinematic = true;
+
 	}
 
 	void ThrowProjectile () {
