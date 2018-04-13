@@ -7,6 +7,7 @@ public class ProjectileThrower : MonoBehaviour {
 	public GameObject projectile;
 	[SerializeField] private GameObject projectileHolder;
 	[SerializeField] private GameObject scope;
+	[SerializeField] private float angleSpeed;
 	[SerializeField] private float force;
 	private Rigidbody2D projectileRigidBody;
 	private bool isGoingUp = true;
@@ -32,14 +33,14 @@ public class ProjectileThrower : MonoBehaviour {
 	void AimShot () {
 		scope.SetActive (true);
 		if (isGoingUp) {
-			if (scope.transform.rotation.eulerAngles.z < 90 || scope.transform.rotation.eulerAngles.z > 359) {
-				scope.transform.rotation = Quaternion.Euler (0, 0, scope.transform.rotation.eulerAngles.z + 0.5f);
+			if (scope.transform.rotation.eulerAngles.z < 90 || scope.transform.rotation.eulerAngles.z > 358) {
+				scope.transform.rotation = Quaternion.Euler (0, 0, scope.transform.rotation.eulerAngles.z + angleSpeed);
 			} else {
 				isGoingUp = false;
 			}
 		} else {
 			if (scope.transform.rotation.eulerAngles.z < 91) {
-				scope.transform.rotation = Quaternion.Euler (0, 0, scope.transform.rotation.eulerAngles.z - 0.5f);
+				scope.transform.rotation = Quaternion.Euler (0, 0, scope.transform.rotation.eulerAngles.z - angleSpeed);
 			} else {
 
 				isGoingUp = true;
