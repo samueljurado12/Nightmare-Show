@@ -32,11 +32,21 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Jump (float direction) {
 		if (Input.GetButtonDown ("Jump" + playerNumber)) {
-			transform.Translate (Vector2.up * jumpForce);
+			onGround = false;
+			transform.Translate (Vector2.up * jumpForce * Time.deltaTime);
 		}
 	}
 
 	void Gravity () {
-		transform.Translate (Vector3.down * gravityForce * Time.deltaTime);
+		if (Input.GetButton ("Jump" + playerNumber)) {
+			transform.Translate (Vector2.up * jumpForce * Time.deltaTime);
+		}
+		transform.Translate (Vector2.down * gravityForce * Time.deltaTime);
+	}
+
+	void OnCollisionEnter2D(Collision2D col){
+		if (col.gameObject.CompareTag ("Floor")) {
+			onGround = true;
+		}
 	}
 }
