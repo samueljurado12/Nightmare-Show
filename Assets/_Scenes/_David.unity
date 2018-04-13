@@ -237,31 +237,6 @@ Prefab:
       propertyPath: m_Name
       value: Fobia
       objectReference: {fileID: 0}
-    - target: {fileID: 114158240625042718, guid: 61dbdd9172ade864a87a364f18ef8c4e,
-        type: 2}
-      propertyPath: minDistanceTravelled
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114158240625042718, guid: 61dbdd9172ade864a87a364f18ef8c4e,
-        type: 2}
-      propertyPath: maxDistanceTravelled
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114158240625042718, guid: 61dbdd9172ade864a87a364f18ef8c4e,
-        type: 2}
-      propertyPath: minActionTime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114158240625042718, guid: 61dbdd9172ade864a87a364f18ef8c4e,
-        type: 2}
-      propertyPath: maxActionTime
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114158240625042718, guid: 61dbdd9172ade864a87a364f18ef8c4e,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61dbdd9172ade864a87a364f18ef8c4e, type: 2}
   m_IsPrefabParent: 0
@@ -314,11 +289,6 @@ Prefab:
       propertyPath: phobia
       value: 
       objectReference: {fileID: 1232064962}
-    - target: {fileID: 114352001596545058, guid: 67808d090ba91e04693b723b836dfd00,
-        type: 2}
-      propertyPath: width
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67808d090ba91e04693b723b836dfd00, type: 2}
   m_IsPrefabParent: 0
