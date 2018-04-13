@@ -1,25 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 
-public class PhobiaAI : MonoBehaviour {
+public class PhobiaAI2 : MonoBehaviour {
 
     [SerializeField] private float speed, minDistance, maxDistance, lifeTime;
 
     private bool isIdle, isOnGround;
     private Vector3 targetPos;
 
-    // Use this for initialization
-    void Start() {
+	// Use this for initialization
+	void Start () {
         isIdle = false;
         isOnGround = true; // TODO Implement function
         targetPos = transform.position;
         // Invoke("SelfDestroy", lifeTime);
-    }
-
-    // Update is called once per frame
-    void Update() {
+	}
+	
+	// Update is called once per frame
+	void Update () {
         if (isOnGround) {
             if (isIdle) {
                 GetNewTarget();
@@ -28,7 +27,7 @@ public class PhobiaAI : MonoBehaviour {
         }
         isIdle = CheckArrival();
         isOnGround = CheckGrounded();
-    }
+	}
 
     // Assign new value to targetPos field
     private void GetNewTarget() {
