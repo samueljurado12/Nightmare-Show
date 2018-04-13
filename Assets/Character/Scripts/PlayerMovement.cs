@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour {
 		transform.Translate (Vector2.down * gravityForce * Time.deltaTime);
 	}
 
-	void OnCollisionEnter2D(Collision2D col){
+	void OnCollisionStay2D(Collision2D col){
 		if (col.gameObject.CompareTag ("Floor")) {
 			onGround = true;
 		}

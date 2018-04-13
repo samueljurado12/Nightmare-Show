@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PhobiaAI : MonoBehaviour {
 
-    [SerializeField] private float speed, minDistance, maxDistance, lifeTime;
+	[SerializeField] private float speed, minDistance, maxDistance, lifeTime;
+	private bool isIdle, isOnGround;
+	private Vector3 targetPos;
 
-    private bool isIdle, isOnGround;
-    private Vector3 targetPos;
+	public string phobiaType;
+
 
     // Use this for initialization
     void Start() {
