@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-	enum PlayerState {STAND, WALK, JUMP};
+	enum PlayerState {STAND, WALK, JUMP, };
 	[Range (1, 2)]
 	[SerializeField]private int playerNumber = 1;
 	[SerializeField]private float walkSpeed, jumpSpeed, minJumpForce, maxFallSpeed, gravityForce;
@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour {
 	private Vector3 playerScale;
 	private bool onGround, pushingWallLeft, pushingWallRight, againstCeiling, isWalkingLeft;
 	private PlayerState currentState;
+	private Animator anim;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour {
 		pushingWallRight = false;
 		againstCeiling = false;
 		isWalkingLeft = false;
+		anim = gameObject.GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -37,7 +39,7 @@ public class PlayerMovement : MonoBehaviour {
 		switch (currentState) {
 		case PlayerState.STAND:
 			velocity = Vector2.zero;
-			//TODO Insert animations
+			anim.Play ("Idle");
 			if (!onGround) {
 				currentState = PlayerState.JUMP;
 				break;
@@ -53,7 +55,7 @@ public class PlayerMovement : MonoBehaviour {
 			break;
 
 		case PlayerState.WALK:
-			//TODO Insert animations
+			anim.Play ("Walk");
 			if (horizontalDir == 0) {
 				currentState = PlayerState.STAND;
 				velocity = Vector2.zero;
@@ -130,7 +132,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
-		if (!col.gameObject.CompareTag ("Floor")) {
+		
 			foreach (ContactPoint2D contact in col.contacts) {
 				if (contact.point.x > transform.position.x) {
 					pushingWallRight = true;
@@ -138,18 +140,18 @@ public class PlayerMovement : MonoBehaviour {
 					pushingWallLeft = true;
 				}
 			}
-		}
+
 	}
 
 	void OnCollisionExit2D(Collision2D col){
-		if (!col.gameObject.CompareTag ("Floor")) {
+		
 			if (pushingWallRight) {
 				pushingWallRight = false;
 			}
 			if (pushingWallLeft) {
 				pushingWallLeft = false;
 			}
-		}
+
 	}
 
 	bool GetMovingLeft(){
