@@ -196,6 +196,6 @@ public class PlayerMovement : MonoBehaviour {
 
 	void nextScene(){
 		//TODO Make game to change scene via scene manager
-		Destroy (gameObject)
+		Destroy (gameObject);
 	}
 }
