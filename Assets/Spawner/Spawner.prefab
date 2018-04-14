@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40bb3652d45521d41a372eb62b14f21b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phobia: {fileID: 0}
-  width: 12
+  phobia: {fileID: 1613291742612194, guid: ad1df32f551a13248a39d4db5603e665, type: 2}
+  width: 50
   spawnRate: 5
   variance: 0.5
-  spawnIncrease: 0.5
+  spawnIncrease: 0.05
