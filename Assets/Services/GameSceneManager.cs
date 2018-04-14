@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameSceneManager {
 
     public static int MAIN_MENU = 0;
-    public static int END_SCENE = SceneManager.sceneCountInBuildSettings;
+    public static int END_SCENE = 1;
     public static int last_scene = 0;
 
     public static void LoadMainMenu() {
@@ -25,6 +25,6 @@ public class GameSceneManager {
     }
 
     private static int GetNextLevelNumber() {
-        return (int)Mathf.Round(Random.Range(1, last_scene));
+        return (int)Mathf.Round(Random.Range(2, SceneManager.sceneCountInBuildSettings));
     }
 }
