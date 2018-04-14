@@ -290,27 +290,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114352001596545058, guid: 67808d090ba91e04693b723b836dfd00,
-        type: 2}
-      propertyPath: phobia
-      value: 
-      objectReference: {fileID: 1305886625503184, guid: f6bc2d688d7fce74886e24b06389d01f,
-        type: 2}
-    - target: {fileID: 114352001596545058, guid: 67808d090ba91e04693b723b836dfd00,
-        type: 2}
-      propertyPath: spawnRate
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114352001596545058, guid: 67808d090ba91e04693b723b836dfd00,
-        type: 2}
-      propertyPath: width
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 114352001596545058, guid: 67808d090ba91e04693b723b836dfd00,
-        type: 2}
-      propertyPath: spawnIncrease
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67808d090ba91e04693b723b836dfd00, type: 2}
   m_IsPrefabParent: 0
@@ -592,31 +571,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114352001596545058, guid: 67808d090ba91e04693b723b836dfd00,
-        type: 2}
-      propertyPath: phobia
-      value: 
-      objectReference: {fileID: 1613291742612194, guid: ad1df32f551a13248a39d4db5603e665,
-        type: 2}
-    - target: {fileID: 114352001596545058, guid: 67808d090ba91e04693b723b836dfd00,
-        type: 2}
-      propertyPath: spawnRate
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114352001596545058, guid: 67808d090ba91e04693b723b836dfd00,
-        type: 2}
-      propertyPath: width
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 114352001596545058, guid: 67808d090ba91e04693b723b836dfd00,
-        type: 2}
-      propertyPath: spawnIncrease
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1018702741212140, guid: 67808d090ba91e04693b723b836dfd00, type: 2}
       propertyPath: m_Name
       value: Spawner (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114352001596545058, guid: 67808d090ba91e04693b723b836dfd00,
+        type: 2}
+      propertyPath: phobia
+      value: 
+      objectReference: {fileID: 1305886625503184, guid: f6bc2d688d7fce74886e24b06389d01f,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67808d090ba91e04693b723b836dfd00, type: 2}
   m_IsPrefabParent: 0

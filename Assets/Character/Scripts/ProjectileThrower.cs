@@ -14,7 +14,8 @@ public class ProjectileThrower : MonoBehaviour {
 	private PlayerMovement playerMovement;
 	private Rigidbody2D projectileRigidBody;
 	private bool isGoingUp = true;
-	private bool hasReleaseProjectileCatcherButton = false;
+	public bool isGrabbing = false;
+	public bool hasReleaseProjectileCatcherButton = false;
 
 	void Start () {
 		playerMovement = transform.parent.gameObject.GetComponent<PlayerMovement> ();
@@ -22,12 +23,13 @@ public class ProjectileThrower : MonoBehaviour {
 	}
 
 	void Update () { //TODO Assign self player fire button
-		if (projectile) {
+		if (projectile || isGrabbing) {
 			if (hasReleaseProjectileCatcherButton) {
 				if (Input.GetButton ("Fire" + playerNumber)) {
 					AimShot ();
 				} else if (Input.GetButtonUp ("Fire" + playerNumber)) {
 					scope.SetActive (false);
+					//playerMovement.SetCurrentState (PlayerMovement.PlayerState.THROW);
 					ThrowProjectile ();
 				}
 			} else if (Input.GetButtonUp ("Fire" + playerNumber)) {

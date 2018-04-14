@@ -40,6 +40,7 @@ public class PhobiaCatcher : MonoBehaviour {
 		if (col.CompareTag ("Phobia")) {
 			projectile = col.transform.parent.gameObject;
 			if (!hasAPlayerDie && Input.GetButtonDown ("Fire" + projectileThrower.playerNumber)) {
+				projectileThrower.isGrabbing = true;
 				playerMovement.SetCurrentState (PlayerMovement.PlayerState.GRAB);
 			}
 		}
@@ -47,6 +48,10 @@ public class PhobiaCatcher : MonoBehaviour {
 
 	public void GrabPhobia () {
 		projectileThrower.setProjectile (projectile);
+		projectileThrower.isGrabbing = false;
+		if (Input.GetButtonUp ("Fire" + projectileThrower.playerNumber)) {
+			projectileThrower.hasReleaseProjectileCatcherButton = true;
+		}
 	}
 
 }
