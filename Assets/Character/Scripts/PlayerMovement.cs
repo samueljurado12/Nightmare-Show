@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-	enum PlayerState {STAND, WALK, JUMP, };
+	enum PlayerState {
+STAND,
+		WALK,
+		JUMP,
+		STAND_HOLDIN,
+		WALK_HOLDING}
+
+	;
+
 	[Range (1, 2)]
 	[SerializeField]private int playerNumber = 1;
 	[SerializeField]private float walkSpeed, jumpSpeed, minJumpForce, maxFallSpeed, gravityForce;
@@ -15,7 +23,7 @@ public class PlayerMovement : MonoBehaviour {
 	private PlayerState currentState;
 	private Animator anim;
 
-	// Use this for initialization
+	// Use this for initializationF
 	void Start () {
 		velocity = Vector2.zero;
 		currentState = PlayerState.STAND;
@@ -119,42 +127,39 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D col){
+	void OnTriggerEnter2D (Collider2D col) {
 		if (col.gameObject.CompareTag ("Floor")) {
 			onGround = true;
 		}
 	}
 
-	void OnTriggerExit2D(Collider2D col){
+	void OnTriggerExit2D (Collider2D col) {
 		if (col.gameObject.CompareTag ("Floor")) {
 			onGround = false;
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D col){
-		
-			foreach (ContactPoint2D contact in col.contacts) {
-				if (contact.point.x > transform.position.x) {
-					pushingWallRight = true;
-				} else if (contact.point.x < transform.position.x) {
-					pushingWallLeft = true;
-				}
+	void OnCollisionEnter2D (Collision2D col) {
+		foreach (ContactPoint2D contact in col.contacts) {
+			if (contact.point.x > transform.position.x) {
+				pushingWallRight = true;
+			} else if (contact.point.x < transform.position.x) {
+				pushingWallLeft = true;
 			}
+		}
 
 	}
 
-	void OnCollisionExit2D(Collision2D col){
-		
-			if (pushingWallRight) {
-				pushingWallRight = false;
-			}
-			if (pushingWallLeft) {
-				pushingWallLeft = false;
-			}
-
+	void OnCollisionExit2D (Collision2D col) {
+		if (pushingWallRight) {
+			pushingWallRight = false;
+		}
+		if (pushingWallLeft) {
+			pushingWallLeft = false;
+		}
 	}
 
-	bool GetMovingLeft(){
+	public bool IsWalkingLeft () {
 		return isWalkingLeft;
 	}
 }
