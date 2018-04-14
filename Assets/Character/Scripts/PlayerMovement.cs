@@ -11,9 +11,7 @@ public class PlayerMovement : MonoBehaviour {
 		STAND_HOLDING,
 		WALK_HOLDING,
 		JUMP_HOLDING,
-		GRAB}
-
-	;
+		GRAB};
 
 	[Range (1, 2)]
 	[SerializeField]private int playerNumber = 1;
@@ -21,7 +19,8 @@ public class PlayerMovement : MonoBehaviour {
 
 	private Vector2 velocity;
 	private Vector3 playerScale;
-	private bool onGround, pushingWallLeft, pushingWallRight, againstCeiling, isWalkingLeft;
+	private bool onGround, pushingWallLeft, pushingWallRight, againstCeiling, isWalkingLeft, touchingCeiling,
+				 isHolding;
 	private PlayerState currentState;
 	private Animator anim;
 
@@ -34,6 +33,8 @@ public class PlayerMovement : MonoBehaviour {
 		pushingWallRight = false;
 		againstCeiling = false;
 		isWalkingLeft = false;
+		touchingCeiling = false;
+		isHolding = false;
 		anim = gameObject.GetComponent<Animator> ();
 	}
 	
@@ -46,10 +47,12 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void VelocityUpdate (float horizontalDir) {
+		string animState;
 		switch (currentState) {
 		case PlayerState.STAND:
 			velocity = Vector2.zero;
-			anim.Play ("Idle");
+			animState = isHolding ? "Idle_Holding" : "Idle";
+			anim.Play (animState);
 			if (!onGround) {
 				currentState = PlayerState.JUMP;
 				break;
@@ -65,7 +68,8 @@ public class PlayerMovement : MonoBehaviour {
 			break;
 
 		case PlayerState.WALK:
-			anim.Play ("Walk");
+			animState = isHolding ? "Walk_Holding" : "Walk";
+			anim.Play (animState);
 			if (horizontalDir == 0) {
 				currentState = PlayerState.STAND;
 				velocity = Vector2.zero;
@@ -163,5 +167,9 @@ public class PlayerMovement : MonoBehaviour {
 
 	public bool IsWalkingLeft () {
 		return isWalkingLeft;
+	}
+
+	public void SetIsHolding(bool value){
+		isHolding = value;
 	}
 }

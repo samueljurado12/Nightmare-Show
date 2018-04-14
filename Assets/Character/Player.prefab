@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 61984641118782628}
   - component: {fileID: 114259580931615256}
   - component: {fileID: 61114182742213504}
-  - component: {fileID: 95989537890845692}
+  - component: {fileID: 95745000811441856}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -199,9 +199,9 @@ BoxCollider2D:
   m_Offset: {x: -0.21922648, y: -1.2406331}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.49999997, y: 0.4201694}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 0.16, y: 0.16}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.3125, y: 2.671875}
+    newSize: {x: 1.3125, y: 2.671875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -224,9 +224,9 @@ BoxCollider2D:
   m_Offset: {x: -0.039594173, y: 0.08972192}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.49999997, y: 0.4201694}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 0.16, y: 0.16}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.3125, y: 2.671875}
+    newSize: {x: 1.3125, y: 2.671875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -234,7 +234,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0791883, y: 1.8524027}
   m_EdgeRadius: 0
---- !u!95 &95989537890845692
+--- !u!95 &95745000811441856
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -368,7 +368,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 1.3125, y: 2.671875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
