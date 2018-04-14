@@ -143,11 +143,9 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D col) {
-		if (onGround) {
-			pushingWallLeft = isWalkingLeft;
-			pushingWallRight = !isWalkingLeft;
+		if (col.gameObject.CompareTag ("Floor")) {
+			velocity.y = 0;
 		}
-
 	}
 
 	void OnCollisionExit2D (Collision2D col) {
