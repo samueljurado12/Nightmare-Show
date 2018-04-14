@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
 		WALK,
 		JUMP,
 		GRAB,
+		THROW,
 		DIE,
 		DEAD};
 
@@ -126,6 +127,9 @@ public class PlayerMovement : MonoBehaviour {
 		case PlayerState.GRAB:
 			anim.Play ("Grab");
 			break;
+		case PlayerState.THROW:
+			anim.Play("Throw");
+			break;
 		}
 	}
 
@@ -200,5 +204,9 @@ public class PlayerMovement : MonoBehaviour {
 		} else {
 			GameSceneManager.LoadNextRandomLevel ();
 		}
+	}
+
+	void Throw(){
+		GetComponentInChildren<ProjectileThrower> ().ThrowProjectile ();
 	}
 }

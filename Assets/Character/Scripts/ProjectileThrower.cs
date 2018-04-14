@@ -69,7 +69,7 @@ public class ProjectileThrower : MonoBehaviour {
 		}
 	}
 
-	void ThrowProjectile () {
+	public void ThrowProjectile () {
 		int direction = playerMovement.IsWalkingLeft () ? -1 : 1;
 		float ang = Mathf.Deg2Rad * scope.transform.rotation.eulerAngles.z;
 		PhobiaAI phobiaAI = projectile.GetComponent<PhobiaAI> ();
