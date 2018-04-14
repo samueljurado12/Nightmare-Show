@@ -128,6 +128,9 @@ public class PlayerMovement : MonoBehaviour {
 				Invoke ("nextScene", 1.75f);
 			}
 			break;
+		case PlayerState.GRAB:
+			anim.Play ("Grab");
+			break;
 		}
 	}
 
