@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour {
 		VelocityUpdate (horizontalDir);
 		setFacing (horizontalDir);
 		transform.Translate (velocity * Time.deltaTime);
+		Debug.Log (onGround);
 	}
 
 	void VelocityUpdate (float horizontalDir) {
