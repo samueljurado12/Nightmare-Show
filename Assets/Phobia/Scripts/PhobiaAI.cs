@@ -4,38 +4,34 @@ using UnityEngine;
 
 public class PhobiaAI : MonoBehaviour {
 
-	[SerializeField] private float speed, minDistance, maxDistance, lifeTime;
+	[SerializeField] private float speed, minTime, maxTime, lifeTime;
 	private bool isIdle, isOnGround;
+    private Rigidbody2D myRigidbody;
 	private Vector3 targetPos;
 
-	public string phobiaType;
+    private int direction;
+    private float timeSinceLastDecision = 0;
+    private float decisionDurationTime = 0;
 
+    public string phobiaType;
 
     // Use this for initialization
     void Start() {
-        isIdle = false;
-        isOnGround = true; // TODO Implement function
-        targetPos = transform.position;
-        // Invoke("SelfDestroy", lifeTime);
+        
     }
 
     // Update is called once per frame
     void Update() {
-        if (isOnGround) {
-            if (isIdle) {
-                GetNewTarget();
-            }
-            Move();
+        if (decisionDurationTime <= timeSinceLastDecision) {
+            timeSinceLastDecision = 0;
+            decisionDurationTime = Random.Range(minTime, maxTime);
+            direction = GetDirection();
         }
-        isIdle = CheckArrival();
-        isOnGround = CheckGrounded();
+
+        Move();
+        timeSinceLastDecision += Time.deltaTime;
     }
 
-    // Assign new value to targetPos field
-    private void GetNewTarget() {
-        int direction = GetDirection();
-        targetPos = transform.position + Vector3.right * direction * Random.Range(minDistance, maxDistance);
-    }
 
     private static int GetDirection() {
         int direction;
@@ -52,19 +48,6 @@ public class PhobiaAI : MonoBehaviour {
     }
 
     private void Move() {
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
-    }
-
-    private bool CheckArrival() {
-        return transform.position == targetPos;
-    }
-
-    private bool CheckGrounded() {
-        // TODO Implement method
-        return true;
-    }
-
-    private void SelfDestroy() {
-        Destroy(gameObject);
+        transform.Translate(Vector3.right * direction * speed * Time.deltaTime);
     }
 }
