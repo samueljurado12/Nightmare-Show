@@ -191,17 +191,18 @@ public class PlayerMovement : MonoBehaviour {
 		isHolding = value;
 	}
 
-	public void SetCurrentState (PlayerState state){
+	public void SetCurrentState (PlayerState state) {
 		currentState = state;
 	}
 
-	void ChangeDieToDead(){
+	void ChangeDieToDead () {
 		currentState = PlayerState.DEAD;
 	}
 
-	void nextScene(){
-		
-		//TODO Make game to change scene via scene manager
-		Destroy (gameObject);
+	void nextScene () {
+		if (ScoreManager.player1Score > 5 || ScoreManager.player2Score > 5) {
+			GameSceneManager.LoadEndScene ();
+		}
+		GameSceneManager.LoadNextRandomLevel ();
 	}
 }

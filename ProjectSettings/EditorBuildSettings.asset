@@ -6,5 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Scenes/_David.unity
+    guid: 66ccb09eed7580942ac25240715ef94a
+  - enabled: 1
+    path: Assets/_Scenes/Samu_Test.unity
+    guid: 9e459aba055a846ca884f7531995e625
+  - enabled: 1
     path: Assets/_Scenes/Alvaro_RealTest.unity
     guid: bd67d37eec971c14e925cc6fc7543e76
+  - enabled: 1
+    path: Assets/_Scenes/Alvaro_RealTest 1.unity
+    guid: ff34ab856cf9c2a46abb0cee879f086c
+  - enabled: 1
+    path: Assets/_Scenes/Alvaro_RealTest 2.unity
+    guid: 4de2130fe3def5846a5fead7df10d93c
