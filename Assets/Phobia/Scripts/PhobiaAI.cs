@@ -34,7 +34,6 @@ public class PhobiaAI : MonoBehaviour {
 			direction = GetDirection ();
 		}
         UpdateAnimation();
-        Debug.Log(isOnGround());
         if (canMove && isOnGround()) {
 			Move ();
 		}

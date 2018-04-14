@@ -45,6 +45,9 @@ public class PlayerMovement : MonoBehaviour {
 		float horizontalDir = Input.GetAxis ("Horizontal" + playerNumber);
 		VelocityUpdate (horizontalDir);
 		setFacing (horizontalDir);
+		if (playerNumber == 1) {
+			Debug.Log (onGround);
+		}
 		GetComponent<Rigidbody2D> ().velocity = velocity;
 	}
 
@@ -126,9 +129,17 @@ public class PlayerMovement : MonoBehaviour {
 			break;
 		case PlayerState.GRAB:
 			anim.Play ("Grab");
+			if (!onGround) {
+				velocity.y -= gravityForce * Time.deltaTime;
+				velocity.y = Mathf.Max (velocity.y, -maxFallSpeed);
+			}
 			break;
 		case PlayerState.THROW:
 			anim.Play("Throw");
+			if (!onGround) {
+				velocity.y -= gravityForce * Time.deltaTime;
+				velocity.y = Mathf.Max (velocity.y, -maxFallSpeed);
+			}
 			break;
 		}
 	}
@@ -208,5 +219,13 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Throw(){
 		GetComponentInChildren<ProjectileThrower> ().ThrowProjectile ();
+	}
+
+	void PickNextStateThrowGrab(){
+		if (!onGround) {
+			currentState = PlayerState.JUMP;
+		} else {
+			currentState = PlayerState.STAND;
+		}
 	}
 }
