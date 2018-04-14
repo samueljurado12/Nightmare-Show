@@ -6,6 +6,7 @@ public class PhobiaCatcher : MonoBehaviour {
 
 	[SerializeField] private List<string> PhobiasList;
 	private ProjectileThrower projectileThrower;
+	private bool hasAPlayerDie = false;
 
 	void Start () {
 		projectileThrower = GetComponentInChildren<ProjectileThrower> ();
@@ -17,6 +18,14 @@ public class PhobiaCatcher : MonoBehaviour {
 			foreach (string s in PhobiasList) {
 				if (s == projectile.GetComponent<PhobiaAI> ().phobiaType) {
 					Destroy (this.gameObject);
+					hasAPlayerDie = true;
+					if (!hasAPlayerDie) {
+						if (projectileThrower.playerNumber == 1) {
+							ScoreManager.player2Score++;
+						} else {
+							ScoreManager.player1Score++;
+						}
+					}
 				}
 			}
 		}

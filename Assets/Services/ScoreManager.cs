@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ScoreManager {
 
-    public static int playerAScore = 0;
-    public static int playerBScore = 0;
+	public static int player1Score = 0;
+	public static int player2Score = 0;
 
-    public static void ResetScore() {
-        playerAScore = 0;
-        playerBScore = 0;
-    }
+	public static void ResetScore () {
+		player1Score = 0;
+		player2Score = 0;
+	}
 }
