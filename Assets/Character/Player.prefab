@@ -368,6 +368,8 @@ MonoBehaviour:
   angleSpeed: 1.5
   force: 500
   playerNumber: 1
+  isGrabbing: 0
+  hasReleaseProjectileCatcherButton: 0
 --- !u!114 &114390317438243768
 MonoBehaviour:
   m_ObjectHideFlags: 1

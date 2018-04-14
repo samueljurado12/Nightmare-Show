@@ -29,8 +29,7 @@ public class ProjectileThrower : MonoBehaviour {
 					AimShot ();
 				} else if (Input.GetButtonUp ("Fire" + playerNumber)) {
 					scope.SetActive (false);
-					//playerMovement.SetCurrentState (PlayerMovement.PlayerState.THROW);
-					ThrowProjectile ();
+					playerMovement.SetCurrentState (PlayerMovement.PlayerState.THROW);
 				}
 			} else if (Input.GetButtonUp ("Fire" + playerNumber)) {
 				hasReleaseProjectileCatcherButton = true;
