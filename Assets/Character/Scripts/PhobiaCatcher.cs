@@ -26,9 +26,9 @@ public class PhobiaCatcher : MonoBehaviour {
 						} else {
 							ScoreManager.player1Score++;
 						}
+						player.SetCurrentState (PlayerMovement.PlayerState.DIE);
 					}
 					hasAPlayerDie = true;
-					player.SetCurrentState (PlayerMovement.PlayerState.DIE);
 				}
 			}
 		}
@@ -38,6 +38,7 @@ public class PhobiaCatcher : MonoBehaviour {
 		if (col.CompareTag ("Phobia")) {
 			GameObject projectile = col.transform.parent.gameObject;
 			if (this.gameObject && Input.GetButtonDown ("Fire" + projectileThrower.playerNumber)) {
+				player.SetCurrentState (PlayerMovement.PlayerState.GRAB);
 				GameObject catchedProjectile = projectile;
 				projectileThrower.setProjectile (catchedProjectile);
 			}

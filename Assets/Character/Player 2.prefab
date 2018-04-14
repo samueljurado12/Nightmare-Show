@@ -56,6 +56,8 @@ GameObject:
   - component: {fileID: 61070993472064058}
   - component: {fileID: 95282021172366726}
   - component: {fileID: 114303561527326348}
+  - component: {fileID: 82147522180180334}
+  - component: {fileID: 114428179010731142}
   m_Layer: 8
   m_Name: Player 2
   m_TagString: Untagged
@@ -201,7 +203,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.3125, y: 2.671875}
-    newSize: {x: 0.16, y: 0.16}
+    newSize: {x: 1.3125, y: 2.671875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -226,7 +228,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.3125, y: 2.671875}
-    newSize: {x: 0.16, y: 0.16}
+    newSize: {x: 1.3125, y: 2.671875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -234,6 +236,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3576813, y: 2.1465998}
   m_EdgeRadius: 0
+--- !u!82 &82147522180180334
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397044220792228}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95282021172366726
 Animator:
   serializedVersion: 3
@@ -243,7 +325,7 @@ Animator:
   m_GameObject: {fileID: 1397044220792228}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 09f0509fdb29aaf4a88adad7e2d30fd9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -281,6 +363,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PhobiasList:
   - CATS
+--- !u!114 &114428179010731142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397044220792228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc20c1a1ca1143ccbdaa85cf4e226a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathClips:
+  - {fileID: 8300000, guid: f9025d918b0ab41c2a921577a41b58e3, type: 3}
+  - {fileID: 8300000, guid: fd576c63ecad343babcce9b5f6a1ea00, type: 3}
+  - {fileID: 8300000, guid: d8e9242eb280245bc891a7d2bca7ba4b, type: 3}
+  - {fileID: 8300000, guid: 0be0c4e91cfc1477682ef675510fbf6a, type: 3}
 --- !u!114 &114819794403976718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -377,12 +475,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: df500becba5b3bc41b147fddde6f596d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c5342cc16d92d24408c793b99a2cf675, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 1.3125, y: 2.671875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
