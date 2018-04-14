@@ -8,14 +8,9 @@ public class PlayerMovement : MonoBehaviour {
 		STAND,
 		WALK,
 		JUMP,
-		STAND_HOLDING,
-		WALK_HOLDING,
-		JUMP_HOLDING,
 		GRAB,
 		DIE,
-		DEAD}
-
-	;
+		DEAD};
 
 	[Range (1, 2)]
 	[SerializeField]private int playerNumber = 1;
