@@ -8,8 +8,11 @@ public class PhobiaAI : MonoBehaviour {
 	public  bool canMove = true;
 
     [SerializeField] private float speed, minTime, maxTime, lifeTime;
+    [SerializeField] private AudioClip[] walkingSounds;
+    [SerializeField] private AudioClip[] throwSounds;
 	private Rigidbody2D myRigidbody;
     private Animator myAnimator;
+    private AudioSource myAudioSource;
 	private Vector3 targetPos;
     private bool isIdle;
 	private int direction;
@@ -20,6 +23,7 @@ public class PhobiaAI : MonoBehaviour {
 	void Start () {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        myAudioSource = GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
@@ -51,13 +55,15 @@ public class PhobiaAI : MonoBehaviour {
         }
     }
 
-    private static int GetDirection () {
+    private int GetDirection () {
 		int direction;
 		float prob = Random.value;
 		if (prob < 0.3) {
-			direction = -1;
+            PlayWalkSound();
+            direction = -1;
 		} else if (prob < 0.6) {
-			direction = 1;
+            PlayWalkSound();
+            direction = 1;
 		} else {
 			direction = 0;
 		}
@@ -71,5 +77,17 @@ public class PhobiaAI : MonoBehaviour {
 
     private bool isOnGround() {
        return myRigidbody.velocity.y == 0;
+    }
+
+    public void PlayThrowSound() {
+        int index = Random.Range(0, throwSounds.Length);
+        myAudioSource.clip = throwSounds[index];
+        myAudioSource.Play();
+    }
+
+    public void PlayWalkSound() {
+        int index = Random.Range(0, walkingSounds.Length);
+        myAudioSource.clip = walkingSounds[index];
+        myAudioSource.Play();
     }
 }

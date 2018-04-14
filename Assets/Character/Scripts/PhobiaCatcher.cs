@@ -6,10 +6,13 @@ public class PhobiaCatcher : MonoBehaviour {
 
 	[SerializeField] private List<string> PhobiasList;
 	private ProjectileThrower projectileThrower;
+
 	private bool hasAPlayerDie = false;
+	private PlayerMovement player;
 
 	void Start () {
 		projectileThrower = GetComponentInChildren<ProjectileThrower> ();
+		player = GetComponent<PlayerMovement> ();
 	}
 
 	void OnTriggerEnter2D (Collider2D col) {
@@ -17,8 +20,6 @@ public class PhobiaCatcher : MonoBehaviour {
 			GameObject projectile = col.transform.parent.gameObject;
 			foreach (string s in PhobiasList) {
 				if (s == projectile.GetComponent<PhobiaAI> ().phobiaType) {
-					Destroy (this.gameObject);
-					hasAPlayerDie = true;
 					if (!hasAPlayerDie) {
 						if (projectileThrower.playerNumber == 1) {
 							ScoreManager.player2Score++;
@@ -26,6 +27,8 @@ public class PhobiaCatcher : MonoBehaviour {
 							ScoreManager.player1Score++;
 						}
 					}
+					hasAPlayerDie = true;
+					player.SetCurrentState (PlayerMovement.PlayerState.DIE);
 				}
 			}
 		}
