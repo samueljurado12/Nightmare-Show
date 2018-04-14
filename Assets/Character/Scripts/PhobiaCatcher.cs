@@ -9,6 +9,7 @@ public class PhobiaCatcher : MonoBehaviour {
 
 	private bool hasAPlayerDie = false;
 	private PlayerMovement playerMovement;
+	public GameObject projectile;
 
 	void Start () {
 		projectileThrower = GetComponentInChildren<ProjectileThrower> ();
@@ -37,13 +38,15 @@ public class PhobiaCatcher : MonoBehaviour {
 
 	void OnTriggerStay2D (Collider2D col) {
 		if (col.CompareTag ("Phobia")) {
-			GameObject projectile = col.transform.parent.gameObject;
+			projectile = col.transform.parent.gameObject;
 			if (!hasAPlayerDie && Input.GetButtonDown ("Fire" + projectileThrower.playerNumber)) {
 				playerMovement.SetCurrentState (PlayerMovement.PlayerState.GRAB);
-				GameObject catchedProjectile = projectile;
-				projectileThrower.setProjectile (catchedProjectile);
 			}
 		}
+	}
+
+	public void GrabPhobia () {
+		projectileThrower.setProjectile (projectile);
 	}
 
 }
