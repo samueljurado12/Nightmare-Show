@@ -5,17 +5,19 @@ using UnityEngine;
 public class ProjectileThrower : MonoBehaviour {
 
 	public GameObject projectile;
+	public int playerNumber;
 	[SerializeField] public GameObject projectileHolder;
 	[SerializeField] private GameObject scope;
 	[SerializeField] private float angleSpeed;
 	[SerializeField] private float force;
 	[Range (1, 2)]
-	public int playerNumber;
+	private PlayerMovement playerMovement;
 	private Rigidbody2D projectileRigidBody;
 	private bool isGoingUp = true;
 	private bool hasReleaseProjectileCatcherButton = false;
 
 	void Start () {
+		playerMovement = transform.parent.gameObject.GetComponent<PlayerMovement> ();
 		scope.SetActive (false);
 	}
 
@@ -46,7 +48,6 @@ public class ProjectileThrower : MonoBehaviour {
 			if (scope.transform.localRotation.eulerAngles.z < 93) {
 				scope.transform.localRotation = Quaternion.Euler (0, 0, scope.transform.localRotation.eulerAngles.z - angleSpeed);
 			} else {
-
 				isGoingUp = true;
 			}
 		}
@@ -57,16 +58,23 @@ public class ProjectileThrower : MonoBehaviour {
 		projectileRigidBody = projectile.GetComponent<Rigidbody2D> ();
 		projectile.transform.SetParent (projectileHolder.transform);
 		projectile.transform.localPosition = Vector3.zero;
+		projectile.transform.localScale = Vector3.one;
+		projectileRigidBody.velocity = Vector2.zero;
 		projectileRigidBody.isKinematic = true;
-
+		projectile.GetComponent<PhobiaAI> ().canMove = false;
+		playerMovement.isHolding = true;
 	}
 
 	void ThrowProjectile () {
+		int direction = playerMovement.IsWalkingLeft () ? -1 : 1;
 		float ang = Mathf.Deg2Rad * scope.transform.rotation.eulerAngles.z;
+		projectile.GetComponent<PhobiaAI> ().canMove = true;
 		projectileRigidBody.isKinematic = false;
-		projectileRigidBody.AddForce (new Vector2 (force * Mathf.Cos (ang), force * Mathf.Sin (ang)));
+		projectileRigidBody.AddForce (new Vector2 (direction * force * Mathf.Cos (ang), direction * force * Mathf.Sin (ang)));
 		projectile.transform.SetParent (null);
-		projectile = null;
 		hasReleaseProjectileCatcherButton = false;
+		playerMovement.isHolding = false;
+
+		projectile = null;
 	}
 }

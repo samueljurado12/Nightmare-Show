@@ -11,17 +11,11 @@ public class PhobiaCatcher : MonoBehaviour {
 		projectileThrower = GetComponentInChildren<ProjectileThrower> ();
 	}
 
-	void Update () {
-		// BORRAR
-		if (transform.position.x < 5) {
-			transform.position += Vector3.right * (Time.deltaTime + 0.03f);
-		}
-	}
-
 	void OnTriggerEnter2D (Collider2D col) {
 		if (col.CompareTag ("Phobia")) {
+			GameObject projectile = col.transform.parent.gameObject;
 			foreach (string s in PhobiasList) {
-				if (s == col.GetComponent<PhobiaAI> ().phobiaType) {
+				if (s == projectile.GetComponent<PhobiaAI> ().phobiaType) {
 					Destroy (this.gameObject);
 				}
 			}
@@ -30,8 +24,9 @@ public class PhobiaCatcher : MonoBehaviour {
 
 	void OnTriggerStay2D (Collider2D col) {
 		if (col.CompareTag ("Phobia")) {
+			GameObject projectile = col.transform.parent.gameObject;
 			if (this.gameObject && Input.GetButtonDown ("Fire" + projectileThrower.playerNumber)) {
-				GameObject catchedProjectile = col.gameObject;
+				GameObject catchedProjectile = projectile;
 				projectileThrower.setProjectile (catchedProjectile);
 			}
 		}

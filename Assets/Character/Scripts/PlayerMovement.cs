@@ -4,17 +4,29 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-	enum PlayerState {STAND, WALK, JUMP};
+	enum PlayerState {
+		STAND,
+		WALK,
+		JUMP,
+		STAND_HOLDING,
+		WALK_HOLDING,
+		JUMP_HOLDING,
+		GRAB}
+
+	;
+
 	[Range (1, 2)]
 	[SerializeField]private int playerNumber = 1;
 	[SerializeField]private float walkSpeed, jumpSpeed, minJumpForce, maxFallSpeed, gravityForce;
 
 	private Vector2 velocity;
 	private Vector3 playerScale;
-	private bool onGround, pushingWallLeft, pushingWallRight, againstCeiling, isWalkingLeft;
+	private bool onGround, pushingWallLeft, pushingWallRight, againstCeiling, isWalkingLeft, touchingCeiling;
+	public bool isHolding;
 	private PlayerState currentState;
+	private Animator anim;
 
-	// Use this for initialization
+	// Use this for initializationF
 	void Start () {
 		velocity = Vector2.zero;
 		currentState = PlayerState.STAND;
@@ -23,20 +35,26 @@ public class PlayerMovement : MonoBehaviour {
 		pushingWallRight = false;
 		againstCeiling = false;
 		isWalkingLeft = false;
+		touchingCeiling = false;
+		isHolding = false;
+		anim = gameObject.GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		float horizontalDir = Input.GetAxis ("Horizontal" + playerNumber);
 		VelocityUpdate (horizontalDir);
-		transform.Translate (velocity * Time.deltaTime);
+		setFacing (horizontalDir);
+		GetComponent<Rigidbody2D> ().velocity = velocity;
 	}
 
 	void VelocityUpdate (float horizontalDir) {
+		string animState;
 		switch (currentState) {
 		case PlayerState.STAND:
 			velocity = Vector2.zero;
-			//TODO Insert animations
+			animState = isHolding ? "Idle_Holding" : "Idle";
+			anim.Play (animState);
 			if (!onGround) {
 				currentState = PlayerState.JUMP;
 				break;
@@ -52,14 +70,14 @@ public class PlayerMovement : MonoBehaviour {
 			break;
 
 		case PlayerState.WALK:
-			//TODO Insert animations
+			animState = isHolding ? "Walk_Holding" : "Walk";
+			anim.Play (animState);
 			if (horizontalDir == 0) {
 				currentState = PlayerState.STAND;
 				velocity = Vector2.zero;
 				break;
 			} else {
 				velocity.x = SetVelocityX (horizontalDir);
-				//TODO Add scale to reverse sprite
 			}
 
 			if (Input.GetButton ("Jump" + playerNumber)) {
@@ -73,14 +91,14 @@ public class PlayerMovement : MonoBehaviour {
 			}
 			break;
 		case PlayerState.JUMP:
-			//TODO Insert animations
+			animState = isHolding ? "Jump_Holding" : "Jump";
+			anim.Play (animState);
 			velocity.y -= gravityForce * Time.deltaTime;
 			velocity.y = Mathf.Max (velocity.y, -maxFallSpeed);
 			if (horizontalDir == 0) {
 				velocity.x = 0;
 			} else {
 				velocity.x = SetVelocityX (horizontalDir);
-				//TODO Add scaling to reverse sprite
 			}
 			if (!Input.GetButton ("Jump" + playerNumber) && velocity.y > 0.0f)
 				velocity.y = Mathf.Min (velocity.y, minJumpForce);
@@ -99,42 +117,60 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
-	float SetVelocityX (float horizontalDir) {
-		return (pushingWallLeft && horizontalDir < 0f || pushingWallRight && horizontalDir > 0f) ? 0f : horizontalDir * walkSpeed;
+	void setFacing (float horizontalDir) {
+		Vector3 vScale = Vector3.one;
+		vScale.x = isWalkingLeft ? -1 : 1;
+		transform.localScale = vScale;
 	}
 
-	void OnTriggerEnter2D(Collider2D col){
+	float SetVelocityX (float horizontalDir) {
+		float targetSpeed = horizontalDir * walkSpeed;
+		if (horizontalDir < 0f) {
+			isWalkingLeft = true;
+			return pushingWallLeft ? 0f : targetSpeed;
+		} else if (horizontalDir > 0) {
+			isWalkingLeft = false;
+			return pushingWallRight ? 0f : targetSpeed;
+		} else {
+			return 0f;
+		}
+	}
+
+	void OnTriggerEnter2D (Collider2D col) {
 		if (col.gameObject.CompareTag ("Floor")) {
 			onGround = true;
 		}
 	}
 
-	void OnTriggerExit2D(Collider2D col){
+	void OnTriggerExit2D (Collider2D col) {
 		if (col.gameObject.CompareTag ("Floor")) {
 			onGround = false;
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D col){
-		if (!col.gameObject.CompareTag ("Floor")) {
-			foreach (ContactPoint2D contact in col.contacts) {
-				if (contact.point.x > transform.position.x) {
-					pushingWallRight = true;
-				} else if (contact.point.x < transform.position.x) {
-					pushingWallLeft = true;
-				}
-			}
+	void OnCollisionEnter2D (Collision2D col) {
+		if (col.gameObject.CompareTag ("Floor")) {
+			velocity.y = 0;
 		}
 	}
 
-	void OnCollisionExit2D(Collision2D col){
-		if (!col.gameObject.CompareTag ("Floor")) {
-			if (pushingWallRight) {
-				pushingWallRight = false;
-			}
-			if (pushingWallLeft) {
-				pushingWallLeft = false;
-			}
+	void OnCollisionExit2D (Collision2D col) {
+		if (pushingWallRight) {
+			pushingWallRight = false;
 		}
+		if (pushingWallLeft) {
+			pushingWallLeft = false;
+		}
+		if (touchingCeiling) {
+			touchingCeiling = false;
+		}
+	}
+
+	public bool IsWalkingLeft () {
+		return isWalkingLeft;
+	}
+
+	public void SetIsHolding (bool value) {
+		isHolding = value;
 	}
 }
