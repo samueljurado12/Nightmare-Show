@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour {
 	[SerializeField]private int playerNumber = 1;
 	[SerializeField]private float walkSpeed, jumpSpeed, minJumpForce, maxFallSpeed, gravityForce;
 
+	private PlayerAudio audioMngr;
 	private Vector2 velocity;
 	private Vector3 playerScale;
 	private bool onGround, pushingWallLeft, pushingWallRight, againstCeiling, isWalkingLeft, touchingCeiling;
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour {
 		touchingCeiling = false;
 		isHolding = false;
 		anim = gameObject.GetComponent<Animator> ();
+		audioMngr = GetComponent<PlayerAudio> ();
 	}
 	
 	// Update is called once per frame
@@ -93,7 +95,6 @@ public class PlayerMovement : MonoBehaviour {
 			}
 			break;
 		case PlayerState.JUMP:
-			//TODO Insert audio(?)
 			animState = isHolding ? "Jump_Holding" : "Jump";
 			anim.Play (animState);
 			velocity.y -= gravityForce * Time.deltaTime;
@@ -123,6 +124,7 @@ public class PlayerMovement : MonoBehaviour {
 		case PlayerState.DEAD:
 			anim.Play ("Dead");
 			if (!IsInvoking ("nextScene")) {
+				audioMngr.playRandomSound ();
 				Invoke ("nextScene", 1.75f);
 			}
 			break;
@@ -195,6 +197,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void nextScene(){
+		
 		//TODO Make game to change scene via scene manager
 		Destroy (gameObject);
 	}
