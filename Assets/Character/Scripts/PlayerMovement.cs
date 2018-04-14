@@ -27,26 +27,26 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void Move (float direction){
-		transform.Translate(direction * speed * Time.deltaTime * Vector3.right);
+		transform.Translate(direction * speed * Time.deltaTime * Vector2.right);
 	}
 
 	void Jump (float direction) {
-		if (Input.GetButtonDown ("Jump" + playerNumber)) {
-			onGround = false;
-			transform.Translate (Vector2.up * jumpForce * Time.deltaTime);
-		}
+		//TODO Implement method
 	}
 
 	void Gravity () {
-		if (Input.GetButton ("Jump" + playerNumber)) {
-			transform.Translate (Vector2.up * jumpForce * Time.deltaTime);
-		}
 		transform.Translate (Vector2.down * gravityForce * Time.deltaTime);
 	}
 
 	void OnCollisionStay2D(Collision2D col){
 		if (col.gameObject.CompareTag ("Floor")) {
 			onGround = true;
+		}
+	}
+
+	void OnCollisionExit2D(Collision2D col){
+		if (col.gameObject.CompareTag ("Floor")) {
+			onGround = false;
 		}
 	}
 }
