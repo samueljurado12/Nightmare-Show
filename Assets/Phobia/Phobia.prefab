@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114158240625042718}
   - component: {fileID: 50189053097407464}
   - component: {fileID: 58147726699724020}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Phobia
   m_TagString: Phobia
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1774422836060132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.27, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -54,7 +54,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -75,9 +75,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0000000059604646, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.08610246
 --- !u!114 &114158240625042718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,9 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f4cb023e0257b4b8a70f9424e64716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.3
-  minDistance: 0.5
-  maxDistance: 2
+  speed: 1
+  minTime: 2
+  maxTime: 5
   lifeTime: 0
   phobiaType: CATS
 --- !u!212 &212733588103864868

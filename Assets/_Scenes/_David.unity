@@ -291,6 +291,11 @@ Prefab:
       propertyPath: m_Name
       value: Fobia
       objectReference: {fileID: 0}
+    - target: {fileID: 114158240625042718, guid: 61dbdd9172ade864a87a364f18ef8c4e,
+        type: 2}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61dbdd9172ade864a87a364f18ef8c4e, type: 2}
   m_IsPrefabParent: 0
