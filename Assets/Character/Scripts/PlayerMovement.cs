@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate () {
 		float horizontalDir = Input.GetAxis ("Horizontal" + playerNumber);
 		VelocityUpdate (horizontalDir);
+		setFacing (horizontalDir);
 		transform.Translate (velocity * Time.deltaTime);
 	}
 
@@ -59,7 +60,6 @@ public class PlayerMovement : MonoBehaviour {
 				break;
 			} else {
 				velocity.x = SetVelocityX (horizontalDir);
-				//TODO Add scale to reverse sprite
 			}
 
 			if (Input.GetButton ("Jump" + playerNumber)) {
@@ -80,7 +80,6 @@ public class PlayerMovement : MonoBehaviour {
 				velocity.x = 0;
 			} else {
 				velocity.x = SetVelocityX (horizontalDir);
-				//TODO Add scaling to reverse sprite
 			}
 			if (!Input.GetButton ("Jump" + playerNumber) && velocity.y > 0.0f)
 				velocity.y = Mathf.Min (velocity.y, minJumpForce);
@@ -99,8 +98,23 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
+	void setFacing (float horizontalDir) {
+		Vector3 vScale = Vector3.one;
+		vScale.x = isWalkingLeft ? -1 : 1;
+		transform.localScale = vScale;
+	}
+
 	float SetVelocityX (float horizontalDir) {
-		return (pushingWallLeft && horizontalDir < 0f || pushingWallRight && horizontalDir > 0f) ? 0f : horizontalDir * walkSpeed;
+		float targetSpeed = horizontalDir * walkSpeed;
+		if (horizontalDir < 0f) {
+			isWalkingLeft = true;
+			return pushingWallLeft ? 0f : targetSpeed;
+		} else if (horizontalDir > 0) {
+			isWalkingLeft = false;
+			return pushingWallRight ? 0f : targetSpeed;
+		} else {
+			return 0f;
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
