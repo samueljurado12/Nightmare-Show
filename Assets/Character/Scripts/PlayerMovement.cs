@@ -151,4 +151,8 @@ public class PlayerMovement : MonoBehaviour {
 			}
 		}
 	}
+
+	bool GetMovingLeft(){
+		return isWalkingLeft;
+	}
 }
