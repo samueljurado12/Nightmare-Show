@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Player
+  m_Name: Player1
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -181,22 +181,22 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102882854658612840}
-    m_Position: {x: 252, y: 12, z: 0}
+    m_Position: {x: 264, y: 108, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102317744786531152}
-    m_Position: {x: 252, y: 60, z: 0}
+    m_Position: {x: 264, y: 156, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102518883747905232}
-    m_Position: {x: 480, y: 12, z: 0}
+    m_Position: {x: 492, y: 108, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102068117446510522}
-    m_Position: {x: 480, y: 60, z: 0}
+    m_Position: {x: 492, y: 156, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102233762387167994}
-    m_Position: {x: 252, y: 108, z: 0}
+    m_Position: {x: 264, y: 204, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102578140936038220}
-    m_Position: {x: 480, y: 108, z: 0}
+    m_Position: {x: 492, y: 204, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

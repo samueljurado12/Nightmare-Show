@@ -1,14 +1,13 @@
 fileFormatVersion: 2
-guid: 9be6f30566661994fa7824f2f6e60f05
-timeCreated: 1523704452
+guid: 32e517e31670c2a458f91af89dccf1ba
+timeCreated: 1523728994
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Animation_Shoot_0
-    21300002: Animation_Shoot_1
-    21300004: Animation_Shoot_2
-    21300006: Animation_Shoot_3
-    21300008: Animation_Shoot_4
+    21300000: Animation2_Run(Hold)_0
+    21300002: Animation2_Run(Hold)_1
+    21300004: Animation2_Run(Hold)_2
+    21300006: Animation2_Run(Hold)_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -79,120 +78,61 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: Tizen
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: Samsung TV
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Animation_Shoot_0
+      name: Animation2_Run(Hold)_0
       rect:
         serializedVersion: 2
-        x: 196
-        y: 555
-        width: 256
-        height: 337
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 161
+        y: 560
+        width: 167
+        height: 396
+      alignment: 9
+      pivot: {x: 0.5, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Animation_Shoot_1
+      name: Animation2_Run(Hold)_1
       rect:
         serializedVersion: 2
-        x: 345
-        y: 832
-        width: 107
-        height: 109
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 652
+        y: 572
+        width: 209
+        height: 388
+      alignment: 9
+      pivot: {x: 0.5, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Animation_Shoot_2
+      name: Animation2_Run(Hold)_2
       rect:
         serializedVersion: 2
-        x: 708
-        y: 555
-        width: 256
-        height: 337
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 161
+        y: 48
+        width: 167
+        height: 396
+      alignment: 9
+      pivot: {x: 0.5, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Animation_Shoot_3
+      name: Animation2_Run(Hold)_3
       rect:
         serializedVersion: 2
-        x: 196
-        y: 44
-        width: 200
-        height: 340
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Animation_Shoot_4
-      rect:
-        serializedVersion: 2
-        x: 708
-        y: 44
-        width: 200
-        height: 340
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 644
+        y: 61
+        width: 212
+        height: 388
+      alignment: 9
+      pivot: {x: 0.5, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
