@@ -8,9 +8,6 @@ public class PlayerMovement : MonoBehaviour {
 		STAND,
 		WALK,
 		JUMP,
-		STAND_HOLDING,
-		WALK_HOLDING,
-		JUMP_HOLDING,
 		GRAB};
 
 	[Range (1, 2)]
@@ -43,8 +40,7 @@ public class PlayerMovement : MonoBehaviour {
 		float horizontalDir = Input.GetAxis ("Horizontal" + playerNumber);
 		VelocityUpdate (horizontalDir);
 		setFacing (horizontalDir);
-		transform.Translate (velocity * Time.deltaTime);
-		Debug.Log (onGround);
+		GetComponent<Rigidbody2D>().velocity = velocity;
 	}
 
 	void VelocityUpdate (float horizontalDir) {
@@ -147,12 +143,9 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D col) {
-		foreach (ContactPoint2D contact in col.contacts) {
-			if (contact.point.x > transform.position.x) {
-				pushingWallRight = true;
-			} else if (contact.point.x < transform.position.x) {
-				pushingWallLeft = true;
-			}
+		if (onGround) {
+			pushingWallLeft = isWalkingLeft;
+			pushingWallRight = !isWalkingLeft;
 		}
 
 	}
@@ -163,6 +156,9 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		if (pushingWallLeft) {
 			pushingWallLeft = false;
+		}
+		if (touchingCeiling) {
+			touchingCeiling = false;
 		}
 	}
 
