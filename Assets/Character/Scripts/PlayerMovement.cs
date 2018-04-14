@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-	enum PlayerState {
+	public enum PlayerState {
 		STAND,
 		WALK,
 		JUMP,
 		STAND_HOLDING,
 		WALK_HOLDING,
 		JUMP_HOLDING,
-		GRAB}
+		GRAB,
+		DIE,
+		DEAD}
 
 	;
 
@@ -91,6 +93,7 @@ public class PlayerMovement : MonoBehaviour {
 			}
 			break;
 		case PlayerState.JUMP:
+			//TODO Insert audio(?)
 			animState = isHolding ? "Jump_Holding" : "Jump";
 			anim.Play (animState);
 			velocity.y -= gravityForce * Time.deltaTime;
@@ -110,8 +113,17 @@ public class PlayerMovement : MonoBehaviour {
 					currentState = PlayerState.WALK;
 					velocity.y = 0;
 				}
-				//TODO Insert audio(?)
 				break;
+			}
+			break;
+		case PlayerState.DIE:
+			velocity = Vector2.zero;
+			anim.Play ("Die");
+			break;
+		case PlayerState.DEAD:
+			anim.Play ("Dead");
+			if (!IsInvoking ("nextScene")) {
+				Invoke ("nextScene", 1.75f);
 			}
 			break;
 		}
@@ -172,5 +184,18 @@ public class PlayerMovement : MonoBehaviour {
 
 	public void SetIsHolding (bool value) {
 		isHolding = value;
+	}
+
+	public void SetCurrentState (PlayerState state){
+		currentState = state;
+	}
+
+	void ChangeDieToDead(){
+		currentState = PlayerState.DEAD;
+	}
+
+	void nextScene(){
+		//TODO Make game to change scene via scene manager
+		Destroy (gameObject)
 	}
 }
