@@ -29,7 +29,6 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate () {
 		float horizontalDir = Input.GetAxis ("Horizontal" + playerNumber);
 		VelocityUpdate (horizontalDir);
-		Debug.Log (onGround + " "  + pushingWallLeft + " " + pushingWallRight);
 		transform.Translate (velocity * Time.deltaTime);
 	}
 
