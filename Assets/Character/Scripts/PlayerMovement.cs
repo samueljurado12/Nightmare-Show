@@ -8,7 +8,12 @@ public class PlayerMovement : MonoBehaviour {
 		STAND,
 		WALK,
 		JUMP,
-		GRAB};
+		STAND_HOLDING,
+		WALK_HOLDING,
+		JUMP_HOLDING,
+		GRAB}
+
+	;
 
 	[Range (1, 2)]
 	[SerializeField]private int playerNumber = 1;
@@ -16,8 +21,8 @@ public class PlayerMovement : MonoBehaviour {
 
 	private Vector2 velocity;
 	private Vector3 playerScale;
-	private bool onGround, pushingWallLeft, pushingWallRight, againstCeiling, isWalkingLeft, touchingCeiling,
-				 isHolding;
+	private bool onGround, pushingWallLeft, pushingWallRight, againstCeiling, isWalkingLeft, touchingCeiling;
+	public bool isHolding;
 	private PlayerState currentState;
 	private Animator anim;
 
@@ -40,7 +45,7 @@ public class PlayerMovement : MonoBehaviour {
 		float horizontalDir = Input.GetAxis ("Horizontal" + playerNumber);
 		VelocityUpdate (horizontalDir);
 		setFacing (horizontalDir);
-		GetComponent<Rigidbody2D>().velocity = velocity;
+		GetComponent<Rigidbody2D> ().velocity = velocity;
 	}
 
 	void VelocityUpdate (float horizontalDir) {
@@ -164,7 +169,7 @@ public class PlayerMovement : MonoBehaviour {
 		return isWalkingLeft;
 	}
 
-	public void SetIsHolding(bool value){
+	public void SetIsHolding (bool value) {
 		isHolding = value;
 	}
 }
