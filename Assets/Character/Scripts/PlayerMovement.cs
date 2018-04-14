@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour {
 	[SerializeField]private float walkSpeed, jumpSpeed, minJumpForce, maxFallSpeed, gravityForce;
 
 	private Vector2 velocity;
-	private Vector3 scale;
-	private bool onGround, pushingWallLeft, pushingWallRight, againstCeiling;
+	private Vector3 playerScale;
+	private bool onGround, pushingWallLeft, pushingWallRight, againstCeiling, isWalkingLeft;
 	private PlayerState currentState;
 
 	// Use this for initialization
@@ -22,15 +22,22 @@ public class PlayerMovement : MonoBehaviour {
 		pushingWallLeft = false;
 		pushingWallRight = false;
 		againstCeiling = false;
+		isWalkingLeft = false;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		float horizontalDir = Input.GetAxis ("Horizontal" + playerNumber);
+		VelocityUpdate (horizontalDir);
+		Debug.Log (onGround + " "  + pushingWallLeft + " " + pushingWallRight);
+		transform.Translate (velocity * Time.deltaTime);
+	}
+
+	void VelocityUpdate (float horizontalDir) {
 		switch (currentState) {
 		case PlayerState.STAND:
 			velocity = Vector2.zero;
-				//TODO Insert animations
+			//TODO Insert animations
 			if (!onGround) {
 				currentState = PlayerState.JUMP;
 				break;
@@ -52,9 +59,7 @@ public class PlayerMovement : MonoBehaviour {
 				velocity = Vector2.zero;
 				break;
 			} else {
-				velocity.x = (pushingWallLeft && horizontalDir < 0f||
-				pushingWallRight && horizontalDir > 0f) ? 
-					0f : horizontalDir * walkSpeed;
+				velocity.x = SetVelocityX (horizontalDir);
 				//TODO Add scale to reverse sprite
 			}
 
@@ -75,9 +80,7 @@ public class PlayerMovement : MonoBehaviour {
 			if (horizontalDir == 0) {
 				velocity.x = 0;
 			} else {
-				velocity.x = (pushingWallLeft && horizontalDir < 0f ||
-				pushingWallRight && horizontalDir > 0f) ? 
-					0f : horizontalDir * walkSpeed;
+				velocity.x = SetVelocityX (horizontalDir);
 				//TODO Add scaling to reverse sprite
 			}
 			if (!Input.GetButton ("Jump" + playerNumber) && velocity.y > 0.0f)
@@ -95,19 +98,44 @@ public class PlayerMovement : MonoBehaviour {
 			}
 			break;
 		}
-		Debug.Log (velocity);
-		transform.Translate (velocity * Time.deltaTime);
 	}
 
-	void OnCollisionEnter2D(Collision2D col){
+	float SetVelocityX (float horizontalDir) {
+		return (pushingWallLeft && horizontalDir < 0f || pushingWallRight && horizontalDir > 0f) ? 0f : horizontalDir * walkSpeed;
+	}
+
+	void OnTriggerEnter2D(Collider2D col){
 		if (col.gameObject.CompareTag ("Floor")) {
 			onGround = true;
 		}
 	}
 
-	void OnCollisionExit2D(Collision2D col){
+	void OnTriggerExit2D(Collider2D col){
 		if (col.gameObject.CompareTag ("Floor")) {
 			onGround = false;
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D col){
+		if (!col.gameObject.CompareTag ("Floor")) {
+			foreach (ContactPoint2D contact in col.contacts) {
+				if (contact.point.x > transform.position.x) {
+					pushingWallRight = true;
+				} else if (contact.point.x < transform.position.x) {
+					pushingWallLeft = true;
+				}
+			}
+		}
+	}
+
+	void OnCollisionExit2D(Collision2D col){
+		if (!col.gameObject.CompareTag ("Floor")) {
+			if (pushingWallRight) {
+				pushingWallRight = false;
+			}
+			if (pushingWallLeft) {
+				pushingWallLeft = false;
+			}
 		}
 	}
 }
