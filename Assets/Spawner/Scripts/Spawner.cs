@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour {
     [SerializeField] private float width;
     [SerializeField] private float spawnRate = 5f;
     [SerializeField] private float variance = 0.5f;
+    [SerializeField] private float spawnIncrease = 0.5f;
 	// Use this for initialization
 	void Start () {
         StartCoroutine(SpawnWaves());
@@ -22,7 +23,7 @@ public class Spawner : MonoBehaviour {
         while (true) {
             Spawn(phobia);
             yield return new WaitForSeconds(spawnRate + Random.value * variance);
-            spawnRate = spawnRate * 0.9f;
+            spawnRate = spawnRate * (1 - spawnIncrease);
         }
     }
 
