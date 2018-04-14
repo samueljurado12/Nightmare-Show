@@ -268,6 +268,7 @@ MonoBehaviour:
   minJumpForce: 15
   maxFallSpeed: 150
   gravityForce: 100
+  isHolding: 0
 --- !u!114 &114192109171231430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,11 +281,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 0}
+  playerNumber: 1
   projectileHolder: {fileID: 1318773778888844}
   scope: {fileID: 1878401782920886}
   angleSpeed: 1.5
   force: 500
-  playerNumber: 1
 --- !u!114 &114745716196790430
 MonoBehaviour:
   m_ObjectHideFlags: 1
