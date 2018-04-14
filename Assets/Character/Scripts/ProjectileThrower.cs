@@ -5,12 +5,12 @@ using UnityEngine;
 public class ProjectileThrower : MonoBehaviour {
 
 	public GameObject projectile;
-	public int playerNumber;
 	[SerializeField] public GameObject projectileHolder;
 	[SerializeField] private GameObject scope;
 	[SerializeField] private float angleSpeed;
 	[SerializeField] private float force;
 	[Range (1, 2)]
+	public int playerNumber;
 	private PlayerMovement playerMovement;
 	private Rigidbody2D projectileRigidBody;
 	private bool isGoingUp = true;
@@ -54,15 +54,17 @@ public class ProjectileThrower : MonoBehaviour {
 	}
 
 	public void setProjectile (GameObject proj) {
-		projectile = proj;
-		projectileRigidBody = projectile.GetComponent<Rigidbody2D> ();
-		projectile.transform.SetParent (projectileHolder.transform);
-		projectile.transform.localPosition = Vector3.zero;
-		projectile.transform.localScale = Vector3.one;
-		projectileRigidBody.velocity = Vector2.zero;
-		projectileRigidBody.isKinematic = true;
-		projectile.GetComponent<PhobiaAI> ().canMove = false;
-		playerMovement.isHolding = true;
+		if (!projectile) {
+			projectile = proj;
+			projectileRigidBody = projectile.GetComponent<Rigidbody2D> ();
+			projectile.transform.SetParent (projectileHolder.transform);
+			projectile.transform.localPosition = Vector3.zero;
+			projectile.transform.localScale = Vector3.one;
+			projectileRigidBody.velocity = Vector2.zero;
+			projectileRigidBody.isKinematic = true;
+			projectile.GetComponent<PhobiaAI> ().canMove = false;
+			playerMovement.isHolding = true;
+		}
 	}
 
 	void ThrowProjectile () {
