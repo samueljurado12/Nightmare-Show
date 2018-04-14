@@ -83,4 +83,12 @@ public class ProjectileThrower : MonoBehaviour {
 
 		projectile = null;
 	}
+
+	public void ReleaseProjectile () {
+		if (projectile) {
+			projectileRigidBody.isKinematic = false;
+			projectile.transform.SetParent (null);
+			projectile = null;
+		}
+	}
 }
