@@ -12,7 +12,8 @@ public class PlayerMovement : MonoBehaviour {
 		WALK_HOLDING,
 		JUMP_HOLDING,
 		GRAB}
-		GRAB};
+
+	;
 
 	[Range (1, 2)]
 	[SerializeField]private int playerNumber = 1;
@@ -44,7 +45,7 @@ public class PlayerMovement : MonoBehaviour {
 		float horizontalDir = Input.GetAxis ("Horizontal" + playerNumber);
 		VelocityUpdate (horizontalDir);
 		setFacing (horizontalDir);
-		GetComponent<Rigidbody2D>().velocity = velocity;
+		GetComponent<Rigidbody2D> ().velocity = velocity;
 	}
 
 	void VelocityUpdate (float horizontalDir) {
