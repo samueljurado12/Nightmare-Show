@@ -12,6 +12,7 @@ public class PhobiaCatcher : MonoBehaviour {
 	}
 
 	void Update () {
+		// BORRAR
 		if (transform.position.x < 5) {
 			transform.position += Vector3.right * (Time.deltaTime + 0.03f);
 		}
@@ -24,16 +25,15 @@ public class PhobiaCatcher : MonoBehaviour {
 					Destroy (this.gameObject);
 				}
 			}
-
 		}
 	}
 
 	void OnTriggerStay2D (Collider2D col) {
-		if (this.gameObject && Input.GetKeyDown (KeyCode.Space)) {
-			GameObject catchedProjectile = col.gameObject;
-
-
-			projectileThrower.setProjectile (catchedProjectile);
+		if (col.CompareTag ("Phobia")) {
+			if (this.gameObject && Input.GetButtonDown ("Fire" + projectileThrower.playerNumber)) {
+				GameObject catchedProjectile = col.gameObject;
+				projectileThrower.setProjectile (catchedProjectile);
+			}
 		}
 	}
 
