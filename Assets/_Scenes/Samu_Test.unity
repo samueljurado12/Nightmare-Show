@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -125,7 +126,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4629478748901878, guid: 41256b952e66d4e1981129ccadbae0ff, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.2
+      value: -2.62
       objectReference: {fileID: 0}
     - target: {fileID: 4629478748901878, guid: 41256b952e66d4e1981129ccadbae0ff, type: 2}
       propertyPath: m_LocalPosition.z
@@ -166,7 +167,33 @@ Prefab:
       propertyPath: playerNumber
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114406673241523600, guid: 41256b952e66d4e1981129ccadbae0ff,
+        type: 2}
+      propertyPath: walkSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114406673241523600, guid: 41256b952e66d4e1981129ccadbae0ff,
+        type: 2}
+      propertyPath: jumpSpeed
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 114406673241523600, guid: 41256b952e66d4e1981129ccadbae0ff,
+        type: 2}
+      propertyPath: minJumpForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114406673241523600, guid: 41256b952e66d4e1981129ccadbae0ff,
+        type: 2}
+      propertyPath: maxFallSpeed
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 114406673241523600, guid: 41256b952e66d4e1981129ccadbae0ff,
+        type: 2}
+      propertyPath: gravityForce
+      value: 60
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114256384616877522, guid: 41256b952e66d4e1981129ccadbae0ff, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 41256b952e66d4e1981129ccadbae0ff, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &789108701 stripped
@@ -271,7 +298,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8.9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -338,7 +365,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18, y: 1}
+  m_Size: {x: 45.58, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &1489177245
 Transform:
@@ -347,7 +374,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1489177243}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.61, z: 0}
+  m_LocalPosition: {x: 0, y: -5.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

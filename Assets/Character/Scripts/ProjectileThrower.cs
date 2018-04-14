@@ -10,9 +10,10 @@ public class ProjectileThrower : MonoBehaviour {
 	[SerializeField] private float angleSpeed;
 	[SerializeField] private float force;
 	[Range (1, 2)]
-	[SerializeField] private int playerNumber;
+	public int playerNumber;
 	private Rigidbody2D projectileRigidBody;
 	private bool isGoingUp = true;
+	private bool hasReleaseProjectileCatcherButton = false;
 
 	void Start () {
 		scope.SetActive (false);
@@ -20,14 +21,17 @@ public class ProjectileThrower : MonoBehaviour {
 
 	void Update () { //TODO Assign self player fire button
 		if (projectile) {
-			if (Input.GetButton ("Fire" + playerNumber)) {
-				AimShot ();
+			if (hasReleaseProjectileCatcherButton) {
+				if (Input.GetButton ("Fire" + playerNumber)) {
+					AimShot ();
+				} else if (Input.GetButtonUp ("Fire" + playerNumber)) {
+					scope.SetActive (false);
+					ThrowProjectile ();
+				}
 			} else if (Input.GetButtonUp ("Fire" + playerNumber)) {
-				scope.SetActive (false);
-				ThrowProjectile ();
+				hasReleaseProjectileCatcherButton = true;
 			}
 		}
-
 	}
 
 	void AimShot () {
@@ -63,5 +67,6 @@ public class ProjectileThrower : MonoBehaviour {
 		projectileRigidBody.AddForce (new Vector2 (force * Mathf.Cos (ang), force * Mathf.Sin (ang)));
 		projectile.transform.SetParent (null);
 		projectile = null;
+		hasReleaseProjectileCatcherButton = false;
 	}
 }
