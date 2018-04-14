@@ -91,7 +91,8 @@ public class PlayerMovement : MonoBehaviour {
 			}
 			break;
 		case PlayerState.JUMP:
-			//TODO Insert animations
+			animState = isHolding ? "Jump_Holding" : "Jump";
+			anim.Play (animState);
 			velocity.y -= gravityForce * Time.deltaTime;
 			velocity.y = Mathf.Max (velocity.y, -maxFallSpeed);
 			if (horizontalDir == 0) {
