@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
 	enum PlayerState {
-STAND,
+		STAND,
 		WALK,
 		JUMP,
-		STAND_HOLDIN,
-		WALK_HOLDING}
+		STAND_HOLDING,
+		WALK_HOLDING,
+		JUMP_HOLDING,
+		GRAB}
 
 	;
 

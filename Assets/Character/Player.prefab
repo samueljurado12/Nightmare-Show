@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 61984641118782628}
   - component: {fileID: 114259580931615256}
   - component: {fileID: 61114182742213504}
+  - component: {fileID: 95989537890845692}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -195,10 +196,10 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.21922648, y: -1.5310353}
+  m_Offset: {x: -0.21922648, y: -1.2406331}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.49999997, y: 0.4201694}
     oldSize: {x: 4, y: 4}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
@@ -206,7 +207,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.55563426, y: 0.14263797}
+  m_Size: {x: 0.55563426, y: 0.14263844}
   m_EdgeRadius: 0
 --- !u!61 &61984641118782628
 BoxCollider2D:
@@ -220,10 +221,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.039594173, y: -0.2611122}
+  m_Offset: {x: -0.039594173, y: 0.08972192}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.49999997, y: 0.4201694}
     oldSize: {x: 4, y: 4}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
@@ -231,8 +232,25 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0791883, y: 2.554071}
+  m_Size: {x: 1.0791883, y: 1.8524027}
   m_EdgeRadius: 0
+--- !u!95 &95989537890845692
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1946949044934590}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd48aa37e2d654d80b0b388a687e74b0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114259580931615256
 MonoBehaviour:
   m_ObjectHideFlags: 1
