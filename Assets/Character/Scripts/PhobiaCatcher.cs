@@ -8,11 +8,12 @@ public class PhobiaCatcher : MonoBehaviour {
 	private ProjectileThrower projectileThrower;
 
 	private bool hasAPlayerDie = false;
-	private PlayerMovement player;
+	private PlayerMovement playerMovement;
+	public GameObject projectile;
 
 	void Start () {
 		projectileThrower = GetComponentInChildren<ProjectileThrower> ();
-		player = GetComponent<PlayerMovement> ();
+		playerMovement = GetComponent<PlayerMovement> ();
 	}
 
 	void OnTriggerEnter2D (Collider2D col) {
@@ -26,7 +27,8 @@ public class PhobiaCatcher : MonoBehaviour {
 						} else {
 							ScoreManager.player1Score++;
 						}
-						player.SetCurrentState (PlayerMovement.PlayerState.DIE);
+						projectileThrower.DropProjectile ();
+						playerMovement.SetCurrentState (PlayerMovement.PlayerState.DIE);
 					}
 					hasAPlayerDie = true;
 				}
@@ -36,13 +38,15 @@ public class PhobiaCatcher : MonoBehaviour {
 
 	void OnTriggerStay2D (Collider2D col) {
 		if (col.CompareTag ("Phobia")) {
-			GameObject projectile = col.transform.parent.gameObject;
-			if (this.gameObject && Input.GetButtonDown ("Fire" + projectileThrower.playerNumber)) {
-				player.SetCurrentState (PlayerMovement.PlayerState.GRAB);
-				GameObject catchedProjectile = projectile;
-				projectileThrower.setProjectile (catchedProjectile);
+			projectile = col.transform.parent.gameObject;
+			if (!hasAPlayerDie && Input.GetButtonDown ("Fire" + projectileThrower.playerNumber)) {
+				playerMovement.SetCurrentState (PlayerMovement.PlayerState.GRAB);
 			}
 		}
+	}
+
+	public void GrabPhobia () {
+		projectileThrower.setProjectile (projectile);
 	}
 
 }

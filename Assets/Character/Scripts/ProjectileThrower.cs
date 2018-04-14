@@ -62,9 +62,9 @@ public class ProjectileThrower : MonoBehaviour {
 			projectile.transform.localScale = Vector3.one;
 			projectileRigidBody.velocity = Vector2.zero;
 			projectileRigidBody.isKinematic = true;
-            PhobiaAI phobiaAI = projectile.GetComponent<PhobiaAI>();
-            phobiaAI.canMove = false;
-            phobiaAI.PlayWalkSound();
+			PhobiaAI phobiaAI = projectile.GetComponent<PhobiaAI> ();
+			phobiaAI.canMove = false;
+			phobiaAI.PlayWalkSound ();
 			playerMovement.isHolding = true;
 		}
 	}
@@ -72,9 +72,9 @@ public class ProjectileThrower : MonoBehaviour {
 	void ThrowProjectile () {
 		int direction = playerMovement.IsWalkingLeft () ? -1 : 1;
 		float ang = Mathf.Deg2Rad * scope.transform.rotation.eulerAngles.z;
-        PhobiaAI phobiaAI = projectile.GetComponent<PhobiaAI>();
-        phobiaAI.canMove = true;
-        phobiaAI.PlayThrowSound();
+		PhobiaAI phobiaAI = projectile.GetComponent<PhobiaAI> ();
+		phobiaAI.canMove = true;
+		phobiaAI.PlayThrowSound ();
 		projectileRigidBody.isKinematic = false;
 		projectileRigidBody.AddForce (new Vector2 (direction * force * Mathf.Cos (ang), direction * force * Mathf.Sin (ang)));
 		projectile.transform.SetParent (null);
@@ -84,7 +84,7 @@ public class ProjectileThrower : MonoBehaviour {
 		projectile = null;
 	}
 
-	public void ReleaseProjectile () {
+	public void DropProjectile () {
 		if (projectile) {
 			projectileRigidBody.isKinematic = false;
 			projectile.transform.SetParent (null);
