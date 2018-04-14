@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 95805553822762650}
   - component: {fileID: 114745716196790430}
   m_Layer: 8
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +102,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1899079973445752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.81, y: -10.68, z: 0}
+  m_LocalPosition: {x: 0, y: -0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4716977124804310}
@@ -199,8 +199,8 @@ BoxCollider2D:
   m_Offset: {x: -0.21922648, y: -1.0895648}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.49999997, y: 0.4201694}
-    oldSize: {x: 4, y: 4}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.3125, y: 2.671875}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -224,8 +224,8 @@ BoxCollider2D:
   m_Offset: {x: -0.039594173, y: 0.08972192}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.49999997, y: 0.4201694}
-    oldSize: {x: 4, y: 4}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.3125, y: 2.671875}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
