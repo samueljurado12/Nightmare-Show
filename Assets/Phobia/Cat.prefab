@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 50451638718664920}
   - component: {fileID: 61330281223079166}
   - component: {fileID: 61973553612228102}
+  - component: {fileID: 95178832223633760}
   m_Layer: 9
   m_Name: Cat
   m_TagString: Phobia
@@ -67,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1305886625503184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -11.32, z: 0}
+  m_LocalPosition: {x: 2.776098, y: -7.8543177, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4107204810927472}
@@ -169,6 +170,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.155016, y: 1.8158512}
   m_EdgeRadius: 0
+--- !u!95 &95178832223633760
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1305886625503184}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114527060268884770
 MonoBehaviour:
   m_ObjectHideFlags: 1
