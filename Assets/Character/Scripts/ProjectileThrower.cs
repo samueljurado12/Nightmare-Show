@@ -46,7 +46,6 @@ public class ProjectileThrower : MonoBehaviour {
 			if (scope.transform.localRotation.eulerAngles.z < 93) {
 				scope.transform.localRotation = Quaternion.Euler (0, 0, scope.transform.localRotation.eulerAngles.z - angleSpeed);
 			} else {
-
 				isGoingUp = true;
 			}
 		}
@@ -57,16 +56,21 @@ public class ProjectileThrower : MonoBehaviour {
 		projectileRigidBody = projectile.GetComponent<Rigidbody2D> ();
 		projectile.transform.SetParent (projectileHolder.transform);
 		projectile.transform.localPosition = Vector3.zero;
+		projectile.transform.localScale = Vector3.one;
+		projectileRigidBody.velocity = Vector2.zero;
 		projectileRigidBody.isKinematic = true;
-
+		projectile.GetComponent<PhobiaAI> ().canMove = false;
 	}
 
 	void ThrowProjectile () {
+		int direction = GetComponentInParent<PlayerMovement> ().IsWalkingLeft () ? -1 : 1;
 		float ang = Mathf.Deg2Rad * scope.transform.rotation.eulerAngles.z;
+		projectile.GetComponent<PhobiaAI> ().canMove = true;
 		projectileRigidBody.isKinematic = false;
-		projectileRigidBody.AddForce (new Vector2 (force * Mathf.Cos (ang), force * Mathf.Sin (ang)));
+		projectileRigidBody.AddForce (new Vector2 (direction * force * Mathf.Cos (ang), direction * force * Mathf.Sin (ang)));
 		projectile.transform.SetParent (null);
-		projectile = null;
 		hasReleaseProjectileCatcherButton = false;
+
+		projectile = null;
 	}
 }

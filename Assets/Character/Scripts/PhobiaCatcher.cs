@@ -11,13 +11,6 @@ public class PhobiaCatcher : MonoBehaviour {
 		projectileThrower = GetComponentInChildren<ProjectileThrower> ();
 	}
 
-	void Update () {
-		// BORRAR
-		if (transform.position.x < 5) {
-			transform.position += Vector3.right * (Time.deltaTime + 0.03f);
-		}
-	}
-
 	void OnTriggerEnter2D (Collider2D col) {
 		if (col.CompareTag ("Phobia")) {
 			foreach (string s in PhobiasList) {
