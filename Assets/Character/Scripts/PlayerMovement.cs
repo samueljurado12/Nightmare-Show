@@ -210,9 +210,11 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void nextScene () {
-		if (ScoreManager.player1Score > 5 || ScoreManager.player2Score > 5) {
-			GameSceneManager.LoadEndScene ();
-		} else {
+        if (ScoreManager.player1Score > 5) {
+            GameSceneManager.LoadPlayer1Win();
+        } else if (ScoreManager.player2Score > 5) {
+            GameSceneManager.LoadPlayer2Win();
+        } else { 
 			GameSceneManager.LoadNextRandomLevel ();
 		}
 	}
