@@ -67,8 +67,10 @@ public class ProjectileThrower : MonoBehaviour {
 			phobiaAI.canMove = false;
 			phobiaAI.PlayWalkSound ();
 			playerMovement.isHolding = true;
-		}
-	}
+            phobiaAI.canKill = false;
+
+        }
+    }
 
 	public void ThrowProjectile () {
 		if (projectile) {
@@ -82,8 +84,8 @@ public class ProjectileThrower : MonoBehaviour {
 			projectile.transform.SetParent (null);
 			hasReleaseProjectileCatcherButton = false;
 			playerMovement.isHolding = false;
-
-			projectile = null;
+            phobiaAI.canKill = true;
+            projectile = null;
 		}
 	}
 
