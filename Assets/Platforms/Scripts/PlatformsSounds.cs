@@ -18,8 +18,11 @@ public class PlatformsSounds : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D col){
-		InvokeRepeating ("PlayRandomSound", Random.Range(minStartTime, maxStartTime), 
-											Random.Range(minRepeatTime, maxRepeatTime));
+		PlayerMovement coll = col.gameObject.GetComponent<PlayerMovement> ();
+		if (coll) {
+			InvokeRepeating ("PlayRandomSound", Random.Range(minStartTime, maxStartTime), 
+				Random.Range(minRepeatTime, maxRepeatTime));
+		}
 	}
 
 	void OnTriggerExit2D(Collider2D col){

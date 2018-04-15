@@ -350,6 +350,8 @@ MonoBehaviour:
   angleSpeed: 1.5
   force: 500
   playerNumber: 2
+  isGrabbing: 0
+  hasReleaseProjectileCatcherButton: 0
 --- !u!114 &114303561527326348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -363,6 +365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PhobiasList:
   - CATS
+  projectile: {fileID: 0}
 --- !u!114 &114428179010731142
 MonoBehaviour:
   m_ObjectHideFlags: 1
