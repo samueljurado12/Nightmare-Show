@@ -91,9 +91,12 @@ public class ProjectileThrower : MonoBehaviour {
 
 	public void DropProjectile () {
 		if (projectile) {
-			projectileRigidBody.isKinematic = false;
+            isGrabbing = false;
+            hasReleaseProjectileCatcherButton = false;
+            projectileRigidBody.isKinematic = false;
 			projectile.transform.SetParent (null);
-			projectile = null;
+            scope.SetActive(true);
+            projectile = null;
 		}
 	}
 }
