@@ -25,4 +25,8 @@ public class Spawner : MonoBehaviour {
 		Instantiate (phobia, spawnPosition, Quaternion.identity);
         spawnRate = spawnRate * (1 - spawnIncrease);
     }
+
+	void OnDrawGizmos(){
+		Gizmos.DrawCube (transform.position, new Vector3 (width,1,0));
+	}
 }
