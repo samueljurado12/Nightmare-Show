@@ -53,6 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phobia: {fileID: 1613291742612194, guid: ad1df32f551a13248a39d4db5603e665, type: 2}
   width: 50
-  spawnRate: 5
+  spawnRate: 3
   variance: 0.5
   spawnIncrease: 0.05
