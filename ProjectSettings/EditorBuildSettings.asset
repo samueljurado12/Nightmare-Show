@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/_Scenes/03a_LosingScreenP2.unity
     guid: 1b0212c0484984b63bd7e5f43730c7a0
   - enabled: 1
+    path: Assets/_Scenes/04_Creditos.unity
+    guid: 0352253f97024e547bc0d3dff6ccc87a
+  - enabled: 1
+    path: Assets/_Scenes/05_Controles.unity
+    guid: f931a7f926f5a1f4f98e1940d5049d56
+  - enabled: 1
     path: Assets/_Scenes/02a_Level1.unity
     guid: fdc517a9817fe4ab88f766f5785de0f9
   - enabled: 1

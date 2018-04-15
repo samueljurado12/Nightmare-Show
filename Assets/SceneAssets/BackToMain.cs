@@ -5,7 +5,7 @@ using UnityEngine;
 public class BackToMain : MonoBehaviour {
 
 	void Start () {
-		InvokeRepeating ("GoToMain", 5, 1 * Time.deltaTime);
+		InvokeRepeating ("GoToMain", 2, 1 * Time.deltaTime);
 	}
 
 	void GoToMain () {

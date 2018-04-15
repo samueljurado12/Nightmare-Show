@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -195,7 +195,7 @@ RectTransform:
   m_GameObject: {fileID: 231773210}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 333.5, y: 187.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.83375, y: 0.83375, z: 0.83375}
   m_Children:
   - {fileID: 685438589}
   m_Father: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 333356528}
   - component: {fileID: 333356527}
   m_Layer: 0
-  m_Name: BackToMain
+  m_Name: GoToCredits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 333356526}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2965227491e6c640895e3e8a6628b40, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d62801cbc9628a44b92a8822395eb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &333356528
@@ -379,7 +379,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 685438588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 254, y: 285, z: 0}
+  m_LocalPosition: {x: 152, y: 170, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 231773214}
@@ -387,7 +387,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 254, y: 285}
+  m_AnchoredPosition: {x: 152, y: 170}
   m_SizeDelta: {x: 357.1, y: 114.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &685438590
@@ -411,10 +411,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 21fe4b61c2cbf8e47a05bb39ad690292, type: 3}
-    m_FontSize: 70
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 4
     m_MaxSize: 108
     m_Alignment: 4
     m_AlignByGeometry: 0
