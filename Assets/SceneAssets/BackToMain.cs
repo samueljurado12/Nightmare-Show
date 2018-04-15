@@ -6,6 +6,7 @@ public class BackToMain : MonoBehaviour {
 
 	void Start () {
 		InvokeRepeating ("GoToMain", 2, 1 * Time.deltaTime);
+		ScoreManager.ResetScore ();
 	}
 
 	void GoToMain () {
