@@ -40,13 +40,13 @@ public class ProjectileThrower : MonoBehaviour {
 	void AimShot () {
 		scope.SetActive (true);
 		if (isGoingUp) {
-			if (scope.transform.localRotation.eulerAngles.z < 90 || scope.transform.localRotation.eulerAngles.z > 355) {
+			if (scope.transform.localRotation.eulerAngles.z < 90 || scope.transform.localRotation.eulerAngles.z > 315) {
 				scope.transform.localRotation = Quaternion.Euler (0, 0, scope.transform.localRotation.eulerAngles.z + angleSpeed);
 			} else {
 				isGoingUp = false;
 			}
 		} else {
-			if (scope.transform.localRotation.eulerAngles.z < 93) {
+			if (scope.transform.localRotation.eulerAngles.z < 93 || scope.transform.localRotation.eulerAngles.z > 320) {
 				scope.transform.localRotation = Quaternion.Euler (0, 0, scope.transform.localRotation.eulerAngles.z - angleSpeed);
 			} else {
 				isGoingUp = true;
