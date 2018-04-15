@@ -6,7 +6,7 @@ public class PhobiaAI : MonoBehaviour {
 
 	public string phobiaType;
 	public bool canMove = true;
-    public bool canKill;
+    public bool canKill = true;
     [SerializeField] private float speed, minTime, maxTime, lifeTime;
     [SerializeField] private AudioClip[] walkingSounds;
     [SerializeField] private AudioClip[] throwSounds;

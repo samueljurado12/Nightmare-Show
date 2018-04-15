@@ -281,7 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phobiaType: DOGS
   canMove: 1
-  canKill: 0
+  canKill: 1
   speed: 1
   minTime: 2
   maxTime: 5
