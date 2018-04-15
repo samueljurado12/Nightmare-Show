@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour {
 		JUMP,
 		GRAB,
 		THROW,
+        CROUCH,
 		DIE,
 		DEAD}
 
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour {
 	private Vector3 playerScale;
 	private PlayerState currentState;
 	private Animator anim;
+    private ProjectileThrower projectileThrower;
 
 	// Use this for initializationF
 	void Start () {
@@ -40,7 +42,9 @@ public class PlayerMovement : MonoBehaviour {
 		isHolding = false;
 		anim = gameObject.GetComponent<Animator> ();
 		audioMngr = GetComponent<PlayerAudio> ();
-	}
+        projectileThrower = GetComponentInChildren<ProjectileThrower>();
+
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -61,14 +65,17 @@ public class PlayerMovement : MonoBehaviour {
 				currentState = PlayerState.JUMP;
 				break;
 			}
-			if (horizontalDir != 0) {
-				currentState = PlayerState.WALK;
-				break;
-			} else if (Input.GetButton ("Jump" + playerNumber)) {
-				velocity.y = jumpSpeed;
-				currentState = PlayerState.JUMP;
-				break;
-			}
+                if (horizontalDir != 0) {
+                    currentState = PlayerState.WALK;
+                    break;
+                } else if (Input.GetButton("Jump" + playerNumber)) {
+                    velocity.y = jumpSpeed;
+                    currentState = PlayerState.JUMP;
+                    break;
+                } else if (Input.GetButton("Crouch" + playerNumber)) {
+                    velocity.x = 0;
+                    currentState = PlayerState.CROUCH;
+                }
 			break;
 
 		case PlayerState.WALK:
@@ -90,8 +97,11 @@ public class PlayerMovement : MonoBehaviour {
 			} else if (!onGround) {
 				currentState = PlayerState.JUMP;
 				break;
-			}
-			break;
+			} else if (Input.GetButton("Crouch" + playerNumber)) {
+                    velocity.x = 0;
+                    currentState = PlayerState.CROUCH;
+                }
+                break;
 		case PlayerState.JUMP:
 			animState = isHolding ? "Jump_Holding" : "Jump";
 			anim.Play (animState);
@@ -140,6 +150,14 @@ public class PlayerMovement : MonoBehaviour {
 				velocity.y = Mathf.Max (velocity.y, -maxFallSpeed);
 			}
 			break;
+        case PlayerState.CROUCH:
+            anim.Play("Crouch");
+            projectileThrower.DropProjectile();
+            isHolding = false;
+            if (!Input.GetButton("Crouch" + playerNumber)) {
+                    currentState = PlayerState.STAND;
+            }
+            break;
 		}
 	}
 

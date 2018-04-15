@@ -8,9 +8,11 @@ public class MusicManager : MonoBehaviour {
 	private AudioSource myAudioSource;
 
 	void Start () {
-		myAudioSource = GetComponent<AudioSource> ();
-		int index = Random.Range (0, clips.Length);
-		myAudioSource.clip = clips [index];
-		myAudioSource.Play ();
-	}
+
+        myAudioSource = GetComponent<AudioSource>();
+        int index = Random.Range(0, clips.Length);
+        myAudioSource.clip = clips[index];
+        myAudioSource.Play();
+    }
+
 }
