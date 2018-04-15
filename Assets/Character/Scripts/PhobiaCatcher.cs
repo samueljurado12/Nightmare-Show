@@ -20,7 +20,8 @@ public class PhobiaCatcher : MonoBehaviour {
 		if (col.CompareTag ("Phobia")) {
 			GameObject projectile = col.transform.parent.gameObject;
 			foreach (string s in PhobiasList) {
-				if (s == projectile.GetComponent<PhobiaAI> ().phobiaType) {
+                PhobiaAI phobiaAI = projectile.GetComponent<PhobiaAI>();
+                if (s == phobiaAI.phobiaType && phobiaAI.canKill) {
 					if (!hasAPlayerDie) {
 						if (projectileThrower.playerNumber == 1) {
 							ScoreManager.player2Score++;
