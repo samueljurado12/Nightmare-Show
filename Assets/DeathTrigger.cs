@@ -10,7 +10,6 @@ public class DeathTrigger : MonoBehaviour {
         if (col.gameObject.CompareTag("Phobia")) {
             Destroy(col.gameObject);
         } else if (col.gameObject.CompareTag("Player")) {
-            Debug.Log("A player has died due to fall");
             PlayerMovement playerMovement = col.GetComponent<PlayerMovement>();
             if (!hasAPlayerDied) {
                 if (playerMovement.playerNumber == 1) {
