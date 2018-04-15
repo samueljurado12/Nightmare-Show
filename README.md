@@ -11,7 +11,7 @@ Go to the webpage and download the last build of the game.
 
 # Version
 ### We'll try to keep it updated and to resolve bugs
-0.0.3
+0.0.1
 
 # Team
 This game has been made by DevsInPyjamas in the EVADGameJam2018.
