@@ -10,7 +10,6 @@ public class MusicManager : MonoBehaviour {
 	void Start () {
         myAudioSource = GetComponent<AudioSource>();
         int index = Random.Range(0, clips.Length);
-		Debug.Log (index);
         myAudioSource.clip = clips[index];
         myAudioSource.Play();
     }
