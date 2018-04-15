@@ -14,14 +14,14 @@ public class PlayerMovement : MonoBehaviour {
 		DEAD};
 
 	[Range (1, 2)]
-	[SerializeField]private int playerNumber = 1;
-	[SerializeField]private float walkSpeed, jumpSpeed, minJumpForce, maxFallSpeed, gravityForce;
+	public int playerNumber = 1;
+	public bool isHolding;
 
+	[SerializeField]private float walkSpeed, jumpSpeed, minJumpForce, maxFallSpeed, gravityForce;
+	private bool onGround, pushingWallLeft, pushingWallRight, againstCeiling, isWalkingLeft, touchingCeiling;
 	private PlayerAudio audioMngr;
 	private Vector2 velocity;
 	private Vector3 playerScale;
-	private bool onGround, pushingWallLeft, pushingWallRight, againstCeiling, isWalkingLeft, touchingCeiling;
-	public bool isHolding;
 	private PlayerState currentState;
 	private Animator anim;
 
@@ -45,9 +45,6 @@ public class PlayerMovement : MonoBehaviour {
 		float horizontalDir = Input.GetAxis ("Horizontal" + playerNumber);
 		VelocityUpdate (horizontalDir);
 		setFacing (horizontalDir);
-		if (playerNumber == 1) {
-			Debug.Log (onGround);
-		}
 		GetComponent<Rigidbody2D> ().velocity = velocity;
 	}
 
