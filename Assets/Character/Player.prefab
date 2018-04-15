@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 70924581239745934}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1899079973445752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.81, y: -10.68, z: 10}
+  m_LocalPosition: {x: -3.17, y: -5.56, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4716977124804310}
@@ -335,12 +335,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
+  isHolding: 0
   walkSpeed: 10
   jumpSpeed: 35
   minJumpForce: 15
   maxFallSpeed: 150
   gravityForce: 100
-  isHolding: 0
 --- !u!114 &114192109171231430
 MonoBehaviour:
   m_ObjectHideFlags: 1
