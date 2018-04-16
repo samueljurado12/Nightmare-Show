@@ -43,6 +43,10 @@ public class GameSceneManager {
 		SceneManager.LoadScene (scene);
 	}
 
+	public static void QuitGame(){
+		Application.Quit ();
+	}
+
 	private static int GetNextLevelNumber () {
 		return (int)Mathf.Round (Random.Range (FIRST_LEVEL_SCENE, SceneManager.sceneCountInBuildSettings));
 	}

@@ -20,4 +20,8 @@ public class MainLevelManager : MonoBehaviour {
 		GameSceneManager.LoadControls ();
 	}
 
+	public void QuitGame(){
+		GameSceneManager.QuitGame ();
+	}
+
 }
