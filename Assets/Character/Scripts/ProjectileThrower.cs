@@ -98,6 +98,7 @@ public class ProjectileThrower : MonoBehaviour {
             scope.SetActive(false);
             PhobiaAI phobiaAI = projectile.GetComponent<PhobiaAI>();
             phobiaAI.canKill = true;
+            phobiaAI.canMove = true;
             projectile = null;
 		}
 	}
