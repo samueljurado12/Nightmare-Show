@@ -11,7 +11,7 @@ Go to the webpage and download the last build of the game.
 
 # Version
 ### We'll try to keep it updated and to resolve bugs
-0.0.1
+0.0.2
 
 # Team
 This game has been made by DevsInPyjamas in the EVADGameJam2018.
@@ -24,3 +24,8 @@ This game has been made by DevsInPyjamas in the EVADGameJam2018.
   - Álvaro Gómez Férnandez [Instagram](https://www.instagram.com/agfmaximilion/?hl=es)
 - Music:
   - Nemmus Music [Webpage](https://www.nemmusmusic.com/)
+
+## Known bugs(current version)
+ - Sometimes  character get bugged with a box and can't move.
+ - Sometimes character becomes invulnerable.
+ - Sometimes throw indicator bugs and does not dissapear after throwing a phobia.
