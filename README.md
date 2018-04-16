@@ -20,7 +20,7 @@ This game has been made by DevsInPyjamas in the EVADGameJam2018.
   - Álvaro de Marcos Alés [Github](https://github.com/sothe5)
   - Antonio David Ponce Martínez [Github](https://github.com/zolastro)
 - Artists:
-  - Unai Ruiz Guinaldo
-  - Álvaro Gómez Férnandez
+  - Unai Ruiz Guinaldo [Instagram](https://www.instagram.com/sawplanik/?hl=es)
+  - Álvaro Gómez Férnandez [Instagram](https://www.instagram.com/agfmaximilion/?hl=es)
 - Music:
   - Nemmus Music [Webpage](https://www.nemmusmusic.com/)
