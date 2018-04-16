@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class MainLevelManager : MonoBehaviour {
 
+	public AudioSource backgroundMusic;
+
 	public void GoToPlay () {
+		Debug.Log ("pasa");
+		MenuMusic.mustBeDestroyed = true;
 		GameSceneManager.LoadNextRandomLevel ();
 	}
 
@@ -15,4 +19,5 @@ public class MainLevelManager : MonoBehaviour {
 	public void GoToControls () {
 		GameSceneManager.LoadControls ();
 	}
+
 }

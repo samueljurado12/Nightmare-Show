@@ -12,7 +12,9 @@ public class PlayerMovement : MonoBehaviour {
 		THROW,
         CROUCH,
 		DIE,
-		DEAD};
+		DEAD}
+
+	;
 
 	[Range (1, 2)]
 	public int playerNumber = 1;
@@ -142,7 +144,7 @@ public class PlayerMovement : MonoBehaviour {
 			}
 			break;
 		case PlayerState.THROW:
-			anim.Play("Throw");
+			anim.Play ("Throw");
 			if (!onGround) {
 				velocity.y -= gravityForce * Time.deltaTime;
 				velocity.y = Mathf.Max (velocity.y, -maxFallSpeed);
@@ -225,20 +227,20 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void nextScene () {
-        if (ScoreManager.player1Score > 5) {
-            GameSceneManager.LoadPlayer1Win();
-        } else if (ScoreManager.player2Score > 5) {
-            GameSceneManager.LoadPlayer2Win();
-        } else { 
+		if (ScoreManager.player1Score >= 3) {
+			GameSceneManager.LoadPlayer1Win ();
+		} else if (ScoreManager.player2Score >= 3) {
+			GameSceneManager.LoadPlayer2Win ();
+		} else { 
 			GameSceneManager.LoadNextRandomLevel ();
 		}
 	}
 
-	void Throw(){
+	void Throw () {
 		GetComponentInChildren<ProjectileThrower> ().ThrowProjectile ();
 	}
 
-	void PickNextStateThrowGrab(){
+	void PickNextStateThrowGrab () {
 		if (!onGround) {
 			currentState = PlayerState.JUMP;
 		} else {

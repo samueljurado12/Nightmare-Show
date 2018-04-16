@@ -95,7 +95,9 @@ public class ProjectileThrower : MonoBehaviour {
             hasReleaseProjectileCatcherButton = false;
             projectileRigidBody.isKinematic = false;
 			projectile.transform.SetParent (null);
-            scope.SetActive(true);
+            scope.SetActive(false);
+            PhobiaAI phobiaAI = projectile.GetComponent<PhobiaAI>();
+            phobiaAI.canKill = true;
             projectile = null;
 		}
 	}
