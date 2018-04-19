@@ -25,6 +25,9 @@ This game has been made by DevsInPyjamas in the EVADGameJam2018.
 - Music:
   - Nemmus Music [Webpage](https://www.nemmusmusic.com/)
 
+## Contributing
+We will check any PR that you people do! To start import the project, we strongly recommend to use Unity 2017.4.1, but feel free to use any version you want. 
+
 ## Known bugs(current version)
  - Sometimes  character get bugged with a box and can't move.
  - Sometimes character becomes invulnerable.
