@@ -236,13 +236,7 @@ public partial class PlayerMovement : MonoBehaviour {
     }
 
     //TODO Should be in a general game manager, not in player movement
-    void nextScene() {
-        if (ScoreManager.player1Score >= 3) {
-            GameSceneManager.LoadPlayer1Win();
-        } else if (ScoreManager.player2Score >= 3) {
-            GameSceneManager.LoadPlayer2Win();
-        } else {
-            GameSceneManager.LoadNextRandomLevel();
-        }
+    void LoadNextScene() {
+        ScoreManager.NextScene();
     }
 }
