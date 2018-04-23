@@ -235,7 +235,6 @@ public partial class PlayerMovement : MonoBehaviour {
         }
     }
 
-    //TODO Should be in a general game manager, not in player movement
     void LoadNextScene() {
         ScoreManager.NextScene();
     }
