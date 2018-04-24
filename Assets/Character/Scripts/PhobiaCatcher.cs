@@ -20,8 +20,8 @@ public class PhobiaCatcher : MonoBehaviour {
 		if (col.CompareTag ("Phobia")) {
 			GameObject projectile = col.transform.parent.gameObject;
 			foreach (string s in PhobiasList) {
-                PhobiaAI phobiaAI = projectile.GetComponent<PhobiaAI>();
-                if (s == phobiaAI.phobiaType && phobiaAI.canKill) {
+				PhobiaAI phobiaAI = projectile.GetComponent<PhobiaAI> ();
+				if (s == phobiaAI.phobiaType && phobiaAI.canKill) {
 					if (!hasAPlayerDie) {
 						if (projectileThrower.playerNumber == 1) {
 							ScoreManager.player2Score++;
@@ -41,18 +41,14 @@ public class PhobiaCatcher : MonoBehaviour {
 		if (col.CompareTag ("Phobia")) {
 			projectile = col.transform.parent.gameObject;
 			if (!hasAPlayerDie && Input.GetButtonDown ("Fire" + projectileThrower.playerNumber)) {
-				projectileThrower.isGrabbing = true;
+				projectileThrower.setProjectile (projectile);
 				playerMovement.SetCurrentState (PlayerMovement.PlayerState.GRAB);
 			}
 		}
 	}
 
 	public void GrabPhobia () {
-		projectileThrower.setProjectile (projectile);
-		projectileThrower.isGrabbing = false;
-		if (Input.GetButtonUp ("Fire" + projectileThrower.playerNumber)) {
-			projectileThrower.hasReleaseProjectileCatcherButton = true;
-		}
+		projectileThrower.setProjectileTransform ();
 	}
 
 }
