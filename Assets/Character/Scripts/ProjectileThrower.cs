@@ -14,7 +14,6 @@ public class ProjectileThrower : MonoBehaviour {
 	private PlayerMovement playerMovement;
 	private Rigidbody2D projectileRigidBody;
 	private bool isGoingUp = true;
-	public bool isGrabbing = false;
 	public bool hasReleaseProjectileCatcherButton = false;
 
 	void Start () {
@@ -22,13 +21,13 @@ public class ProjectileThrower : MonoBehaviour {
 		scope.SetActive (false);
 	}
 
-	void Update () { //TODO Assign self player fire button
-		if (projectile || isGrabbing) {
+	void Update () { 
+		if (projectile) {
 			if (hasReleaseProjectileCatcherButton) {
 				if (Input.GetButton ("Fire" + playerNumber)) {
 					AimShot ();
 				} else if (Input.GetButtonUp ("Fire" + playerNumber)) {
-					scope.SetActive (false);
+					hasReleaseProjectileCatcherButton = false;
 					playerMovement.SetCurrentState (PlayerMovement.PlayerState.THROW);
 				}
 			} else if (Input.GetButtonUp ("Fire" + playerNumber)) {
@@ -58,25 +57,22 @@ public class ProjectileThrower : MonoBehaviour {
 		if (!projectile) {
 			projectile = proj;
 			projectileRigidBody = projectile.GetComponent<Rigidbody2D> ();
-			projectile.transform.SetParent (projectileHolder.transform);
-			projectile.transform.localPosition = Vector3.zero;
-			projectile.transform.localScale = Vector3.one;
 			projectileRigidBody.velocity = Vector2.zero;
 			PhobiaAI phobiaAI = projectile.GetComponent<PhobiaAI> ();
 			phobiaAI.PlayWalkSound ();
 			phobiaAI.GrabPhobia();
 			playerMovement.isHolding = true;
-
-        }
-    }
+		}
+	}
 
 	public void ThrowProjectile () {
 		if (projectile) {
 			int direction = playerMovement.IsWalkingLeft () ? -1 : 1;
 			float ang = Mathf.Deg2Rad * scope.transform.rotation.eulerAngles.z;
+			Vector2 vForce = new Vector2 (direction * force * Mathf.Cos (ang), direction * force * Mathf.Sin (ang));
+			scope.SetActive (false);
 			PhobiaAI phobiaAI = projectile.GetComponent<PhobiaAI> ();
 			phobiaAI.PlayThrowSound ();
-			Vector2 vForce = new Vector2 (direction * force * Mathf.Cos (ang), direction * force * Mathf.Sin (ang));
 			phobiaAI.ThrowPhobia(vForce);
 			hasReleaseProjectileCatcherButton = false;
 			playerMovement.isHolding = false;
@@ -86,13 +82,17 @@ public class ProjectileThrower : MonoBehaviour {
 
 	public void DropProjectile () {
 		if (projectile) {
-            isGrabbing = false;
             hasReleaseProjectileCatcherButton = false;
-			projectile.transform.SetParent (null);
             scope.SetActive(false);
             PhobiaAI phobiaAI = projectile.GetComponent<PhobiaAI>();
 			phobiaAI.DropPhobia();
             projectile = null;
 		}
+	}
+
+	public void GrabPhobia () {
+		projectile.transform.SetParent (projectileHolder.transform);
+		projectile.transform.localPosition = Vector3.zero;
+		projectile.transform.localScale = Vector3.one;
 	}
 }
