@@ -16,7 +16,6 @@ public partial class PlayerMovement : MonoBehaviour {
 	private PlayerState currentState;
 	private Animator anim;
     private ProjectileThrower projectileThrower;
-
 	// Use this for initializationF
 	void Start () {
 		velocity = Vector2.zero;

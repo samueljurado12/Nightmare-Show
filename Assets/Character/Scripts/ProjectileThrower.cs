@@ -62,12 +62,10 @@ public class ProjectileThrower : MonoBehaviour {
 			projectile.transform.localPosition = Vector3.zero;
 			projectile.transform.localScale = Vector3.one;
 			projectileRigidBody.velocity = Vector2.zero;
-			projectileRigidBody.isKinematic = true;
 			PhobiaAI phobiaAI = projectile.GetComponent<PhobiaAI> ();
-			phobiaAI.canMove = false;
 			phobiaAI.PlayWalkSound ();
+			phobiaAI.GrabPhobia();
 			playerMovement.isHolding = true;
-            phobiaAI.canKill = false;
 
         }
     }
@@ -77,14 +75,11 @@ public class ProjectileThrower : MonoBehaviour {
 			int direction = playerMovement.IsWalkingLeft () ? -1 : 1;
 			float ang = Mathf.Deg2Rad * scope.transform.rotation.eulerAngles.z;
 			PhobiaAI phobiaAI = projectile.GetComponent<PhobiaAI> ();
-			phobiaAI.canMove = true;
 			phobiaAI.PlayThrowSound ();
-			projectileRigidBody.isKinematic = false;
-			projectileRigidBody.AddForce (new Vector2 (direction * force * Mathf.Cos (ang), direction * force * Mathf.Sin (ang)));
-			projectile.transform.SetParent (null);
+			Vector2 vForce = new Vector2 (direction * force * Mathf.Cos (ang), direction * force * Mathf.Sin (ang));
+			phobiaAI.ThrowPhobia(vForce);
 			hasReleaseProjectileCatcherButton = false;
 			playerMovement.isHolding = false;
-            phobiaAI.canKill = true;
             projectile = null;
 		}
 	}
@@ -93,12 +88,10 @@ public class ProjectileThrower : MonoBehaviour {
 		if (projectile) {
             isGrabbing = false;
             hasReleaseProjectileCatcherButton = false;
-            projectileRigidBody.isKinematic = false;
 			projectile.transform.SetParent (null);
             scope.SetActive(false);
             PhobiaAI phobiaAI = projectile.GetComponent<PhobiaAI>();
-            phobiaAI.canKill = true;
-            phobiaAI.canMove = true;
+			phobiaAI.DropPhobia();
             projectile = null;
 		}
 	}
